@@ -1,0 +1,13 @@
+#navbar {
+    display: flex;
+    justify-content: space-evenly;
+    background-color:  #5151a1;
+    color: white; 
+    font-size: 18px;
+}
+
+#app-name {
+    text-align: center;
+    font-size: 48px;
+    margin-top: 40px;
+}
