@@ -1,13 +1,76 @@
+body {
+    margin-top: auto;
+}
+
 #navbar {
     display: flex;
     justify-content: space-evenly;
-    background-color:  #5151a1;
+    background-color:  rgb(106, 15, 108);
     color: white; 
     font-size: 18px;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+
+#navbar > a {
+    text-decoration: none;
+    color: white;
+}
+
+a:active {
+    background-color: black;
 }
 
 #app-name {
     text-align: center;
     font-size: 48px;
     margin-top: 40px;
+}
+
+#buy-sidebar {
+    color: white;
+    background-color: rgb(40, 40, 40);
+    width: 15vw;
+    height: 100vh;
+    font-size: 24px;
+    text-align: center;
+    position: fixed;
+    z-index: 1;
+}
+
+#buy-sidebar-list {
+    margin-top: 15vh;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#buy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: auto;
+    column-gap: 10%;
+    row-gap: 10%;
+    padding: 30vh 10vw 30vh 30vw;
+    height: 100%;
+}
+
+#buy-searchbar-div {
+    background-color: white;
+    width: 100%;
+    height: 25vh;
+    position: fixed;
+    border-bottom: solid 2px black;
+    z-index: 0;
+}
+
+#buy-searchbar {
+    width: 30%;
+    margin-top: 15vh;
+    margin-left: 30%;
+    width: 50vw;
+    height: 5%;
+    position: fixed;
 }

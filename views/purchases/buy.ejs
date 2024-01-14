@@ -1,5 +1,23 @@
 <%- include("../partials/navbar.ejs") %>
-<div>
-    <ul>
-    </ul>
+<body>
+<div id="buy-sidebar">
+    <div id="buy-sidebar-list">
+        <div>Instrument</div>
+        <div>Difficulty Level</div>
+        <div>Composer</div>
+    </div>
 </div>
+<div id="buy-searchbar-div">
+    <input placeholder="search song name..." id="buy-searchbar"></input>
+</div>
+<section>
+<div id="buy-grid">
+    <% for (let book of songBooks) { %>
+    <div>
+        <img src="/images/purchase/<%= book %>" width="200" height="300">
+        <h4>Name </h4>
+    </div>
+    <% } %>
+</div>
+</section>
+</body>

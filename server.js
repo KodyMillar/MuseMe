@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql2");
 const expressLayouts = require("express-ejs-layouts");
+const buyController = require("./controllers/buy-controller")
 
 app.set("view engine", "ejs");
 const port = process.env.port || 8000;
@@ -16,9 +17,7 @@ app.get("/", (req, res) => {
     res.render("index");
 })
 
-app.get("/buy", (req, res) => {
-  res.render("purchases/buy");
-})
+app.get("/buy", buyController.listBooks);
 
 // create a new MySQL connection
 const connection = mysql.createConnection({
