@@ -24,7 +24,7 @@ const connection = mysql.createConnection({
     host: 'localhost',
     port: 3306,
     user: 'Kody',
-    password: 'Kodinux#0468',
+    password: process.env.DB_PASSWORD,
     database: 'music_app'
   });
   // connect to the MySQL database
@@ -35,6 +35,13 @@ const connection = mysql.createConnection({
       console.log('Connected to MySQL database!');
     }
   });
+
+  let statement = `
+    CREATE TABLE IF NOT EXISTS MUSIC_BOOKS (
+      
+    );
+  `
+
   // close the MySQL connection
   connection.end();
 
