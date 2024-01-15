@@ -74,3 +74,9 @@ a:active {
     height: 5%;
     position: fixed;
 }
+
+.book-labels {
+    display: flex;
+    justify-content: space-between;
+    height: 5%;
+}

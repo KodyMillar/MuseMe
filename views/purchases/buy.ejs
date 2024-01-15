@@ -8,14 +8,15 @@
     </div>
 </div>
 <div id="buy-searchbar-div">
-    <input placeholder="search song name..." id="buy-searchbar"></input>
+    <input placeholder="search book name..." id="buy-searchbar"></input>
 </div>
 <section>
 <div id="buy-grid">
     <% for (let book of songBooks) { %>
     <div>
-        <img src="/images/purchase/<%= book %>" width="200" height="300">
-        <h4>Name </h4>
+        <img src="/images/purchase/<%= book.image_link %>" width="200" height="300">
+        <div class="book-labels" ><h5><%= book.Instrument %></h5><h5><%= book.Difficulty %></h5></div>
+        <h4><%= book.Book_Name %></h4>
     </div>
     <% } %>
 </div>
