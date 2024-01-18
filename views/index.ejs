@@ -8,6 +8,14 @@
 </head>
 <body>
     <%- include("partials/navbar.ejs") %>
-    <h1 id="app-name">Museme</h1>
+    <h1 id="app-name">MuseMe</h1>
+    <h3>Play music at your level</h3>
+    <div id="shop-div"><a href="/buy"><button id="shop-button"><h4>See Music Books</h4></button></a></div>
+    <h3>The Greats</h3>
+    <div id="composers">
+        <% for (let composer of composers) { %>
+        <img src="images/composers/<%= composer %>">
+    <% } %>
+    </div>
 </body>
 </html>

@@ -14,7 +14,6 @@ body {
 }
 
 #navbar > a {
-    text-decoration: none;
     color: white;
 }
 
@@ -22,11 +21,58 @@ a:active {
     background-color: black;
 }
 
+a:link {
+    text-decoration: none;
+}
+
+#shop-div {
+    display: flex;
+    justify-content: center;
+}
+
+#shop-div > a {
+    width: 25%;
+}
+
+#shop-button {
+    background-color: rgb(40, 40, 40);
+    width: 100%;
+    margin: auto;
+    color: white;
+    font-size: 26px;
+}
+
 #app-name {
     text-align: center;
     font-size: 48px;
-    margin-top: 40px;
+    margin: auto;
+    padding-top: 10%;
+    color: rgb(138, 8, 8);
 }
+
+#app-name ~ h3 {
+    padding-left: 20%;
+    word-wrap: break-word;
+    width: 30%;
+    font-size: 2em;
+}
+
+#composers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 1%;
+    row-gap: 2%;
+    width: 80%;
+    padding-left: 10%;
+}
+
+#composers > img {
+    width: 90%;
+    height: 90%;
+}
+
+/* buy page
+---------------------------------*/
 
 #buy-sidebar {
     color: white;

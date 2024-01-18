@@ -3,7 +3,8 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql2");
 const expressLayouts = require("express-ejs-layouts");
-const buyController = require("./controllers/buy-controller")
+const buyController = require("./controllers/buy-controller");
+const indexController = require("./controllers/index_controller");
 
 app.set("view engine", "ejs");
 const port = process.env.port || 8000;
@@ -14,9 +15,7 @@ app.use(express.json());
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-    res.render("index");
-})
+app.get("/", indexController.listComposers)
 
 app.get("/buy", buyController.listBooks);
 
