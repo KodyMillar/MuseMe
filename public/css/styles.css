@@ -17,6 +17,23 @@ body {
     color: white;
 }
 
+#homepage {
+    position: fixed;
+    margin-left: 2%;
+    color: white;
+    z-index: 10;
+    font-size: 20px;
+}
+
+#homepage > h2 {
+    margin: 2vh;
+}
+
+#homepage-layout {
+    display: flex;
+    flex-direction: column;
+}
+
 a:active {
     background-color: black;
 }
@@ -32,6 +49,8 @@ a:link {
 
 #shop-div > a {
     width: 25%;
+    background-color: none;
+    padding-bottom: 5%;
 }
 
 #shop-button {
@@ -40,6 +59,11 @@ a:link {
     margin: auto;
     color: white;
     font-size: 26px;
+    border-radius: 10%;
+}
+
+#shop-button > h4 {
+    margin: 15px;
 }
 
 #app-name {
@@ -50,10 +74,22 @@ a:link {
     color: rgb(138, 8, 8);
 }
 
-#app-name ~ h3 {
+#homepage-top {
+    background-color: rgb(234, 224, 255);
+}
+
+#homepage-top > h3 {
+    text-align: center;
+    font-size: 2em;
+    margin-top: 10vh;
+}
+
+.homepage-section {
+    border-top: 1px solid black;
+}
+
+.home-section-heading {
     padding-left: 20%;
-    word-wrap: break-word;
-    width: 30%;
     font-size: 2em;
 }
 
@@ -61,15 +97,20 @@ a:link {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 1%;
-    row-gap: 2%;
+    row-gap: 1%;
     width: 80%;
+    height: 75%;
     padding-left: 10%;
 }
 
 #composers > img {
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
+    border-radius: 2%;
+    object-fit: cover;
 }
+
+
 
 /* buy page
 ---------------------------------*/

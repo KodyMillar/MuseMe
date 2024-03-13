@@ -7,7 +7,6 @@ const buyController = require("./controllers/buy-controller");
 const indexController = require("./controllers/index_controller");
 
 app.set("view engine", "ejs");
-const port = process.env.port || 8000;
 
 // middleware
 app.use(express.json());
@@ -18,9 +17,9 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", indexController.listComposers)
 
 app.get("/buy", buyController.listBooks);
+app.get("/buy/search", buyController.searchBooks);
 
-app.listen(port, () => {
-  console.log(`App listening on port ${port}.`);
+app.listen(process.env.PORT, () => {
+  console.log(`App listening on port ${process.env.PORT}.`);
   console.log("Running on domain " + "http://127.0.0.1:8000/")
 })
-

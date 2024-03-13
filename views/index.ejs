@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>MuseMe</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Sheet App</title>
@@ -8,14 +9,20 @@
 </head>
 <body>
     <%- include("partials/navbar.ejs") %>
-    <h1 id="app-name">MuseMe</h1>
-    <h3>Play music at your level</h3>
-    <div id="shop-div"><a href="/buy"><button id="shop-button"><h4>See Music Books</h4></button></a></div>
-    <h3>The Greats</h3>
-    <div id="composers">
-        <% for (let composer of composers) { %>
-        <img src="images/composers/<%= composer %>">
-    <% } %>
-    </div>
+    <section id="homepage-top">
+        <h1 id="app-name">MuseMe</h1>
+        <h3>Play music at your level</h3>
+        <div id="shop-div"><a href="/buy"><button id="shop-button"><h4>See Music Books</h4></button></a></div>
+    </section>
+    <section class="homepage-section">
+        <h3 class="home-section-heading">Music Sheets From the Greats</h3>
+        <div id="composers">
+            <% for (let composer of composers) { %>
+            <img src="images/composers/<%= composer %>">
+        <% } %>
+        </div>
+    </section>
+    <h3>
+
 </body>
 </html>
