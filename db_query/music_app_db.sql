@@ -52,3 +52,57 @@ VALUES
 ("First Etude Album for Violin", "Violin", "Intermediate", "ViolinEtudes.jpg");
 
 
+CREATE TABLE song (
+	Song_ID INT NOT NULL AUTO_INCREMENT,
+    Song_Name VARCHAR(50) NOT NULL,
+    Difficulty VARCHAR(20) NOT NULL,
+    PRIMARY KEY (Song_ID)
+);
+
+CREATE TABLE book_song (
+	Book_ID INT NOT NULL,
+    Song_ID INT NOT NULL,
+    FOREIGN KEY (Book_ID) REFERENCES music_book(Book_ID),
+    FOREIGN KEY (Song_ID) REFERENCES song(Song_ID),
+    PRIMARY KEY (Book_ID, Song_ID)
+);
+
+CREATE TABLE instrument (
+	Instrument_ID INT NOT NULL AUTO_INCREMENT,
+    Instrument VARCHAR(40) NOT NULL,
+    PRIMARY KEY (Instrument_ID)
+);
+
+CREATE TABLE user_account (
+	User_ID INT NOT NULL AUTO_INCREMENT,
+    Username VARCHAR(30) NOT NULL,
+    Password VARCHAR(30) NOT NULL,
+    PRIMARY KEY (User_ID)
+);
+
+CREATE TABLE instrument_players (
+	Instrument_ID INT NOT NULL,
+    User_ID INT NOT NULL,
+    FOREIGN KEY (Instrument_ID) REFERENCES instrument(Instrument_ID),
+    FOREIGN KEY (User_ID) REFERENCES user_account(User_ID),
+    PRIMARY KEY (Instrument_ID, User_ID)
+);
+
+CREATE TABLE purchase (
+	Book_ID INT NOT NULL,
+    User_ID INT NOT NULL,
+    FOREIGN KEY (Book_ID) REFERENCES music_book(Book_ID),
+    FOREIGN KEY (User_ID) REFERENCES user_account(User_ID),
+    PRIMARY KEY (Book_ID, User_ID)
+);
+
+CREATE TABLE song_progress (
+	Book_ID INT NOT NULL,
+    User_ID INT NOT NULL,
+    Song_ID INT NOT NULL,
+    progress ENUM ('Not Started', 'In Progress', 'Completed') NOT NULL,
+    FOREIGN KEY (Book_ID) REFERENCES music_book(Book_ID),
+    FOREIGN KEY (User_ID) REFERENCES user_account(User_ID),
+    FOREIGN KEY (Song_ID) REFERENCES song(Song_ID),
+    PRIMARY KEY (Book_ID, User_ID, Song_ID)
+);

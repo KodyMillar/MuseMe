@@ -1,0 +1,10 @@
+<%- include("../partials/navbar.ejs") %>
+<body>
+	<h1 id="play-page-header">Your Books</h1>
+	<div id="play-grid">
+	<% for (let book of userBooks) { %>
+		<img src="/images/purchase/<%= book.image_link %>" width="220" height="340">
+	<% } %>
+	</div>
+</body>
+</html>

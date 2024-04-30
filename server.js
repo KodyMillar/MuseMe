@@ -5,6 +5,7 @@ const mysql = require("mysql2");
 const expressLayouts = require("express-ejs-layouts");
 const buyController = require("./controllers/buy-controller");
 const indexController = require("./controllers/index_controller");
+const playController = require("./controllers/play-controller");
 
 app.set("view engine", "ejs");
 
@@ -18,6 +19,7 @@ app.get("/", indexController.listComposers)
 
 app.get("/buy", buyController.listBooks);
 app.get("/buy/search", buyController.searchBooks);
+app.get("/play", playController.playOverview)
 
 app.listen(process.env.PORT, () => {
   console.log(`App listening on port ${process.env.PORT}.`);
