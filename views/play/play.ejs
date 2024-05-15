@@ -3,8 +3,32 @@
 	<h1 id="play-page-header">Your Books</h1>
 	<div id="play-grid">
 	<% for (let book of userBooks) { %>
-		<img src="/images/purchase/<%= book.image_link %>" width="220" height="340">
+		<img src="/images/purchase/<%= book.image_link %>" width="220" height="340" class="user-book-img" id="book-id-<%= book.Book_ID %>">
 	<% } %>
 	</div>
+	<% for (let book in bookSongs) { %>
+		<div class="book-songs-window" id="book-window-id-<%= bookSongs[book][0].Book_ID %>">
+		<div>
+		<% for (let song of bookSongs[book]) { %>
+		<div class="song-pages" id="song-pages-<%= song.Song_ID %>">
+			<% for (let i=1; i <= song.pages; i++) { %>
+				<img src="/images/songs/<%= song.Image_Link %>/page<%= i %>.jpg" class="book-song">
+			<% } %>
+		</div>
+		<% } %>
+		</div>
+		<div class="songs-list">
+			<div class="close-book-button"><h6>Close book</h6></div>
+			<h2><%= book %></h2>
+			<% for (let song of bookSongs[book]) { %>
+				<div class="song" id="song-id-<%= song.Song_ID %>">
+					<h3><%= song.Song_Name %></h3>
+				</div>
+			<% } %>
+		</div>
+		</div>
+		</div>
+	<% } %>
+	<script type="text/javascript" src="/js/script.js"></script>
 </body>
 </html>

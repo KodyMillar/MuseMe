@@ -56,6 +56,7 @@ CREATE TABLE song (
 	Song_ID INT NOT NULL AUTO_INCREMENT,
     Song_Name VARCHAR(50) NOT NULL,
     Difficulty VARCHAR(20) NOT NULL,
+    Image_Link VARCHAR(100) NOT NULL,
     PRIMARY KEY (Song_ID)
 );
 
@@ -106,3 +107,12 @@ CREATE TABLE song_progress (
     FOREIGN KEY (Song_ID) REFERENCES song(Song_ID),
     PRIMARY KEY (Book_ID, User_ID, Song_ID)
 );
+
+
+INSERT INTO song (Song_Name, Difficulty, Image_Link, pages) VALUES 
+	-- ('Waltz No.7 in C# Minor', 'Grade 7', 'chopin/Waltz_No.7_In_C_Sharp_Minor', 7)
+    ('Waltz in D-flat Major', 'Grade 7', 'chopin/Waltz_in_D-flat_major_Op.64_No.1', 3);
+
+
+INSERT INTO book_song VALUES 
+	(1, 2);

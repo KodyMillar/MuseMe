@@ -191,4 +191,92 @@ a:link {
     width: 75vw;
     margin-left: 12.5vw;
     margin-right: 12.5vw;
+    z-index: 100;
+}
+
+#play-grid > img {
+    z-index: 0
+}
+
+.book-songs-window {
+    /* position: fixed; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    column-gap: 5%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    background-color: black;
+    /* opacity: 80%; */
+    overflow-y: scroll;
+    visibility: hidden;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+}
+
+.book-song {
+    width: 49vw;
+    height: 71.4vw;
+    margin: 0 5% 2% 1%;
+    /* position: fixed; */
+    z-index: 100;
+    /* opacity: 100%; */
+}
+
+.songs-list {
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    background-color: white;
+    position: fixed;
+    right: 1vw;
+    left: 52vw;
+    top: 0;
+    bottom: 0;
+    padding: 2%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.songs-list > .song:first-child {
+    border-top: solid 2px black;
+}
+
+.songs-list > h2 {
+    font-size: 24px;
+}
+
+.song {
+    border-bottom: solid 2px black;
+    padding-left: 3%;
+}
+
+.song-pages {
+    visibility: hidden;
+    position: absolute;
+}
+
+.close-book-button {
+    position: fixed;
+    right: 3%;
+    left: 90%;
+    top: 1%;
+    bottom: 99%;
+    font-size: 24px;
+    color: white;
+    background-color: rgb(15, 15, 15);
+    height: 5%;
+    border-radius: 5%;
+    text-align: center;
+    align-content: center;
+}
+
+.close-book-button > h6 {
+    margin: auto;
 }
