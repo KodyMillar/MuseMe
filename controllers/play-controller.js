@@ -19,7 +19,6 @@ const playController = {
 							}
 							songsByBook[song.Book_Name].push(song)
 						})
-						console.log(songsByBook)
 						res.render("play/play", { 
 							userBooks: books,
 							bookSongs: songsByBook

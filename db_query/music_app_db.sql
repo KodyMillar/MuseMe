@@ -108,11 +108,13 @@ CREATE TABLE song_progress (
     PRIMARY KEY (Book_ID, User_ID, Song_ID)
 );
 
-
 INSERT INTO song (Song_Name, Difficulty, Image_Link, pages) VALUES 
 	-- ('Waltz No.7 in C# Minor', 'Grade 7', 'chopin/Waltz_No.7_In_C_Sharp_Minor', 7)
-    ('Waltz in D-flat Major', 'Grade 7', 'chopin/Waltz_in_D-flat_major_Op.64_No.1', 3);
+    -- ('Waltz in D-flat Major', 'Grade 7', 'chopin/Waltz_in_D-flat_major_Op.64_No.1', 3);
+    ('Fantaisie Impromptu in C Minor', 'Grade 8', 'chopin/Fantaisie-Impromptu_in_C_Minor_Chopin', 5);
 
 
 INSERT INTO book_song VALUES 
-	(1, 2);
+	-- (1, 2);
+    (1, 3);
+    
