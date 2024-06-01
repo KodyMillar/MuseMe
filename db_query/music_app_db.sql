@@ -1,3 +1,5 @@
+CREATE DATABASE music_app;
+
 USE music_app;
 
 -- music_book table stores all the music books for sale
@@ -6,13 +8,12 @@ CREATE TABLE `music_app`.`music_book` (
   `Book_Name` VARCHAR(100) NOT NULL,
   `Instrument` VARCHAR(100) NOT NULL,
   `Difficulty` VARCHAR(45) NOT NULL,
-  `Image_Link` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`Book_ID`),
   UNIQUE INDEX `Book_ID_UNIQUE` (`Book_ID` ASC) VISIBLE);
 
 
 INSERT INTO music_book (
-	Book_Name,
+    Book_Name,
     Instrument,
     Difficulty
 )
@@ -21,7 +22,7 @@ VALUES
 ("Piano Repertoire 5", "Piano", "Grade 5");
 
 ALTER TABLE music_book
-ADD image_link varchar(100);
+ADD image_link varchar(100) NOT NULL;
 
 UPDATE music_book
 SET image_link = "ChopinPianoCollection.jpg"
@@ -53,15 +54,16 @@ VALUES
 
 
 CREATE TABLE song (
-	Song_ID INT NOT NULL AUTO_INCREMENT,
+    Song_ID INT NOT NULL AUTO_INCREMENT,
     Song_Name VARCHAR(50) NOT NULL,
     Difficulty VARCHAR(20) NOT NULL,
     Image_Link VARCHAR(100) NOT NULL,
+    pages INT NOT NULL,
     PRIMARY KEY (Song_ID)
 );
 
 CREATE TABLE book_song (
-	Book_ID INT NOT NULL,
+    Book_ID INT NOT NULL,
     Song_ID INT NOT NULL,
     FOREIGN KEY (Book_ID) REFERENCES music_book(Book_ID),
     FOREIGN KEY (Song_ID) REFERENCES song(Song_ID),
@@ -98,7 +100,7 @@ CREATE TABLE purchase (
 );
 
 CREATE TABLE song_progress (
-	Book_ID INT NOT NULL,
+    Book_ID INT NOT NULL,
     User_ID INT NOT NULL,
     Song_ID INT NOT NULL,
     progress ENUM ('Not Started', 'In Progress', 'Completed') NOT NULL,
@@ -109,12 +111,31 @@ CREATE TABLE song_progress (
 );
 
 INSERT INTO song (Song_Name, Difficulty, Image_Link, pages) VALUES 
-	-- ('Waltz No.7 in C# Minor', 'Grade 7', 'chopin/Waltz_No.7_In_C_Sharp_Minor', 7)
-    -- ('Waltz in D-flat Major', 'Grade 7', 'chopin/Waltz_in_D-flat_major_Op.64_No.1', 3);
+    ('Waltz No.7 in C# Minor', 'Grade 7', 'chopin/Waltz_No.7_In_C_Sharp_Minor', 7),
+    ('Waltz in D-flat Major', 'Grade 7', 'chopin/Waltz_in_D-flat_major_Op.64_No.1', 3),
     ('Fantaisie Impromptu in C Minor', 'Grade 8', 'chopin/Fantaisie-Impromptu_in_C_Minor_Chopin', 5);
 
 
 INSERT INTO book_song VALUES 
-	-- (1, 2);
+    (1, 1),
+    (1, 2),
     (1, 3);
     
+
+-- New query for 'chopin' folder
+INSERT INTO song (Song_Name, Difficulty, Image_Link, pages) VALUES
+    ('Etude Op.10 No.12 in C Minor Revolutionary', 'Grade 8', 'chopin/Etude_Op.10_No.12_in_C_Minor_Revolutionary', '5')
+    ('Nocturne Op 9 No 2 E Flat Major', 'Grade 7', 'chopin/Nocturne_Op_9_No_2_E_Flat_Major', '4')
+    ('Waltz in A Minor', 'Grade 6', 'chopin/Waltz_in_A_Minor', '2')
+    ('Waltz in F Minor Op 70 No. 2', 'Grade 7', 'chopin/Waltz_in_F_Minor_Op_70_No._2', '4')
+    ('Waltz Opus 69 No. 1 in A Major', 'Grade 6', 'chopin/Waltz_Opus_69_No._1_in_A_Major', '5')
+
+INSERT INTO book_song VALUES
+    (1, 4)
+    (1, 5)
+    (1, 6)
+    (1, 7)
+    (1, 8)
+
+
+
