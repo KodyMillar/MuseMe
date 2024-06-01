@@ -121,21 +121,23 @@ INSERT INTO book_song VALUES
     (1, 2),
     (1, 3);
     
-
 -- New query for 'chopin' folder
 INSERT INTO song (Song_Name, Difficulty, Image_Link, pages) VALUES
-    ('Etude Op.10 No.12 in C Minor Revolutionary', 'Grade 8', 'chopin/Etude_Op.10_No.12_in_C_Minor_Revolutionary', '5')
-    ('Nocturne Op 9 No 2 E Flat Major', 'Grade 7', 'chopin/Nocturne_Op_9_No_2_E_Flat_Major', '4')
-    ('Waltz in A Minor', 'Grade 6', 'chopin/Waltz_in_A_Minor', '2')
-    ('Waltz in F Minor Op 70 No. 2', 'Grade 7', 'chopin/Waltz_in_F_Minor_Op_70_No._2', '4')
-    ('Waltz Opus 69 No. 1 in A Major', 'Grade 6', 'chopin/Waltz_Opus_69_No._1_in_A_Major', '5')
+    ('Etude Op.10 No.12 in C Minor Revolutionary', 'Grade 8', 'chopin/Etude_Op.10_No.12_in_C_Minor_Revolutionary', '5'),
+    ('Nocturne Op 9 No 2 E Flat Major', 'Grade 7', 'chopin/Nocturne_Op_9_No_2_E_Flat_Major', '4'),
+    ('Waltz in A Minor', 'Grade 6', 'chopin/Waltz_in_A_Minor', '2'),
+    ('Waltz in F Minor Op 70 No. 2', 'Grade 7', 'chopin/Waltz_in_F_Minor_Op_70_No._2', '4'),
+    ('Waltz Opus 69 No. 1 in A Major', 'Grade 6', 'chopin/Waltz_Opus_69_No._1_in_A_Major', '5');
 
 INSERT INTO book_song VALUES
-    (1, 4)
-    (1, 5)
-    (1, 6)
-    (1, 7)
-    (1, 8)
-
+    (1, 4),
+    (1, 5),
+    (1, 6),
+    (1, 7),
+    (1, 8);
+    
+UPDATE song
+SET Song_Name = 'Waltz Opus 69 No. 1 in A-flat Major'
+WHERE Song_ID = 8;
 
 

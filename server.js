@@ -6,6 +6,7 @@ const expressLayouts = require("express-ejs-layouts");
 const buyController = require("./controllers/buy-controller");
 const indexController = require("./controllers/index_controller");
 const playController = require("./controllers/play-controller");
+const authController = require("./controllers/auth-controller");
 
 app.set("view engine", "ejs");
 
@@ -16,6 +17,9 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", indexController.listComposers)
+
+app.get("/login", authController.login);
+app.post("/auth", authController.authenticate)
 
 app.get("/buy", buyController.listBooks);
 app.get("/buy/search", buyController.searchBooks);

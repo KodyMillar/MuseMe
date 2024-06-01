@@ -19,7 +19,7 @@
 		</div>
 		<div class="songs-list">
 			<div class="close-book-button"><h6>Close book</h6></div>
-			<h2><%= book %></h2>
+			<h2 class="book-title"><%= book %></h2>
 			<% for (let song of bookSongs[book]) { %>
 				<div class="song" id="song-id-<%= song.Song_ID %>">
 					<h3><%= song.Song_Name %></h3>

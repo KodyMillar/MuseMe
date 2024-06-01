@@ -248,9 +248,9 @@ a:link {
     border-top: solid 2px black;
 }
 
-.songs-list > h2 {
+/* .songs-list > h3 {
     font-size: 24px;
-}
+} */
 
 .song {
     border-bottom: solid 2px black;
@@ -279,4 +279,20 @@ a:link {
 
 .close-book-button > h6 {
     margin: auto;
+}
+
+.book-title {
+    color: rgb(78, 12, 79);
+    font-size: 40px;
+    text-align: center;
+}
+
+
+
+/* login page
+------------------------------------*/
+
+#login-form {
+    background-color: purple;
+    border-radius: 10px;
 }
