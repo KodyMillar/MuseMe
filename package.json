@@ -18,6 +18,10 @@
     "express-ejs-layouts": "^2.5.1",
     "mysql": "^2.18.1",
     "mysql2": "^3.7.0",
-    "nodemon": "^3.1.2"
+    "strong-password-check": "^1.0.2",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.3"
   }
 }

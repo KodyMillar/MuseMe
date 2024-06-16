@@ -1,12 +1,12 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const mysql = require("mysql2");
 const expressLayouts = require("express-ejs-layouts");
 const buyController = require("./controllers/buy-controller");
 const indexController = require("./controllers/index_controller");
 const playController = require("./controllers/play-controller");
 const authController = require("./controllers/auth-controller");
+const authRoute = require("./routes/authRoute");
 
 app.set("view engine", "ejs");
 
@@ -16,16 +16,16 @@ app.use(express.json());
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", indexController.listComposers)
+app.get("/", indexController.listComposers);
 
-app.get("/login", authController.login);
-app.post("/auth", authController.authenticate)
+app.use("/auth", authRoute);
+// app.post("/auth", authController.authenticate)
 
 app.get("/buy", buyController.listBooks);
 app.get("/buy/search", buyController.searchBooks);
-app.get("/play", playController.playOverview)
+app.get("/play", playController.playOverview);
 
 app.listen(process.env.PORT, () => {
   console.log(`App listening on port ${process.env.PORT}.`);
-  console.log("Running on domain " + "http://127.0.0.1:8000/")
+  console.log("Running on domain " + "http://127.0.0.1:8000/");
 })

@@ -140,4 +140,59 @@ UPDATE song
 SET Song_Name = 'Waltz Opus 69 No. 1 in A-flat Major'
 WHERE Song_ID = 8;
 
+ALTER TABLE user_account
+ADD (
+	First_Name VARCHAR(40) NOT NULL,
+	Last_Name VARCHAR(40) NOT NULL,
+	Email VARCHAR(40) NOT NULL
+);
 
+ALTER TABLE instrument_players
+DROP CONSTRAINT instrument_players_ibfk_2;
+
+ALTER TABLE Instrument_Players
+MODIFY COLUMN User_ID CHAR(36) NOT NULL;
+
+ALTER TABLE purchase
+DROP CONSTRAINT purchase_ibfk_2;
+
+ALTER TABLE purchase
+MODIFY COLUMN User_ID CHAR(36) NOT NULL;
+
+ALTER TABLE song_progress
+DROP CONSTRAINT song_progress_ibfk_2;
+
+ALTER TABLE song_progress
+MODIFY COLUMN User_ID CHAR(36) NOT NULL;
+
+ALTER TABLE user_account
+MODIFY COLUMN User_ID CHAR(36) NOT NULL;
+
+ALTER TABLE instrument_players
+ADD CONSTRAINT inst_pl_user_fk FOREIGN KEY (User_ID) REFERENCES user_account(User_ID); 
+
+ALTER TABLE purchase
+ADD CONSTRAINT purchase_user_fk FOREIGN KEY (User_ID) REFERENCES user_account(User_ID);
+
+ALTER TABLE song_progress
+ADD CONSTRAINT song_prog_user_fk FOREIGN KEY (User_ID) REFERENCES user_account(User_ID);
+
+SET SQL_SAFE_UPDATES = 0;
+
+DELETE FROM user_account;
+
+SET SQL_SAFE_UPDATES = 1;
+
+SELECT username FROM user_account
+WHERE username = 'Kodawg395';
+
+ALTER TABLE user_account
+MODIFY COLUMN Password CHAR(60) NOT NULL;
+
+CREATE TABLE test (
+	id INT NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (id)
+);
+
+SELECT * FROM test
+WHERE id = 'john';

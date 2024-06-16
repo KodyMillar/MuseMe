@@ -1,27 +1,34 @@
 const bcrypt = require("bcrypt");
 const db = require("../config/db");
+const checkPass = require("strong-password-check");
+const userService = require("../services/userService");
 
 const authController = {
-	login: (req, res) => {
-		res.render("authentication/login");
+	authenticate: (username, password) => {
+
+		const user = userService.getUser(username);
+		if (!user) {
+			console.log("no user")
+			return false
+		}
+		
+		const authenticated = userService.authenticateUser;
+		if (authenticated) {
+			return true;
+		}
+		return false;
+
 	},
+	checkUnique: (req, res, next) => {
+		config = {
+			lowercase: true,
+			uppercase: true,
+			digits: true,
+			specialChars: true,
+			minLength: 8,
+		}
 
-	authenticate: (req, res) => {
-		statement = `SELECT username, password FROM user_account
-		WHERE username = '${req.params.username}`;
-
-		db.execute(statemet, (err, user) => {
-			const password = req.params.password;
-	
-			if (password === user.password) {
-				// Redirect to the home page
-			}
-			else {
-				// Redirect user back to login page, with an error message
-				console.log("not authenticated")
-			}
-		})
-
+		const passwordStrength = checkPass(req.params.password, config);
 	}
 }
 
