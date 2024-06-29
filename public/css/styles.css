@@ -292,7 +292,33 @@ a:link {
 /* login page
 ------------------------------------*/
 
+.sign-in-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    width: 80%;
+    height: 75vh;
+    margin: 5% 10% 0 10%;
+}
+
 #login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 75%;
+    height: 50%;
+    background-color: purple;
+    border-radius: 10px;
+}
+
+#register-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 75%;
+    height: 50%;
     background-color: purple;
     border-radius: 10px;
 }

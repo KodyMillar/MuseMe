@@ -1,5 +1,4 @@
 const db = require('../config/db');
-const bcrypt = require('bcrypt');
 const passwordService = require('./passwordService');
 const { v4: uuidv4 } = require('uuid');
 
@@ -102,12 +101,12 @@ const userService = {
 			const lastName = userInfo.lastName;
 			const email = userInfo.email;
 	
-			const hash = await bcrypt.hash(password, saltrounds);
+			const hash = await passwordService.encryptPass(password);
 			
 			const query = `INSERT INTO user_account VALUES
 			(?, ?, ?, ?, ?, ?);`
 			
-			const insert = await connection.query(query, [uuid, username, hash, firstName, lastName, email]);
+			await connection.query(query, [uuid, username, hash, firstName, lastName, email]);
 
 		} catch ({name, message, err}) {
 			console.log(name);

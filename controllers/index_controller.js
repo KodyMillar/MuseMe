@@ -8,7 +8,7 @@ const indexController = {
         fs.readdir(path.join(__dirname.replace("\\controllers", ""), "public", "images", "composers"), (err, images) => {
             if (err) throw err;
             res.render("index", { composers: images });
-        })
+        });
     }
 }
 

@@ -1,5 +1,5 @@
 const checkPass = require("strong-password-check");
-
+const bcrypt = require('bcrypt');
 
 const passwordService = {
 	checkPass: async (password) => {
@@ -28,6 +28,12 @@ const passwordService = {
 			console.log(message);
 			throw err;
 		}
+	},
+
+	encryptPass: (password) => {
+		saltRounds = 10;
+		return bcrypt.hash(password, saltRounds)
+			.catch((err) => {throw err});
 	},
 
 	comparePass: (enteredPassword, dbPassword) => {

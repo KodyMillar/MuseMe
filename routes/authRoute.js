@@ -44,7 +44,7 @@ router.post("/register", async (req, res) => {
 
 	try {
 		const userCreated = await authController.register(userInfo);
-		console.log(userCreated);
+		
 		if (!userCreated) {
 			res.redirect('/auth/register');
 		}

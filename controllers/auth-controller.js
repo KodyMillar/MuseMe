@@ -6,7 +6,6 @@ const passwordService = require('../services/passwordService');
 const authController = {
 	authenticate: async (username, password) => {
 		try {
-
 			const user = await userService.getUser(username);
 			
 			if (!user) {
