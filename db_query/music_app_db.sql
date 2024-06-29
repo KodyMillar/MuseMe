@@ -196,3 +196,5 @@ CREATE TABLE test (
 
 SELECT * FROM test
 WHERE id = 'john';
+
+SELECT * FROM user_account;
