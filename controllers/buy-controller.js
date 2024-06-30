@@ -11,22 +11,6 @@ booksDirectory = path.join(__dirname.replace("controllers", ""), "/public/images
 let buyController = {
     listBooks: async (req, res) => {
 
-        // app.post("/sendData", async (req, res) => {
-        //     let searchText = await req.data;
-        //     console.log(searchText)
-        //     if (!searchText) {
-        //         searchText = "*";
-        //     }
-        //     let statement = `SELECT ${searchText} FROM music_book`;
-            
-        //     connection.execute(statement, shoppingBooksList = (err, result) => {
-        //         if (err) throw err;
-        //         else {
-        //             res.render("purchases/buy", { songBooks: result })
-        //         }
-        //     });
-        // })
-
         const connection = await connectDB();
 
         let query = `SELECT * FROM music_book`;
@@ -60,10 +44,27 @@ let buyController = {
         //         });
         //     }
         // });
+    },
+
+    purchaseBook: async (req, res) => {
+        try {
+            const connection = await connectDB();
+    
+            const bookId = req.params.id;
+            query = `SELECT * FROM music_book
+            WHERE Book_ID = ?`
+    
+            const [book] = await connection.query(query, [bookId]);
+            
+            res.render("purchases/purchaseBook", {
+                book: book.shift()
+            });
+
+        } catch ({name, message}) {
+            console.log(name);
+            console.log(message);
+        }
     }
 };
-
-
-
 
 module.exports = buyController;

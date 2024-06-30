@@ -198,3 +198,31 @@ SELECT * FROM test
 WHERE id = 'john';
 
 SELECT * FROM user_account;
+
+SHOW TABLES;
+
+SELECT Username, Book_Name, mb.Book_ID, s.Song_ID, Song_Name, s.Difficulty, s.Image_Link, pages FROM music_book AS mb 
+INNER JOIN book_song AS bs ON mb.Book_ID = bs.Book_ID 
+INNER JOIN song AS s ON bs.Song_ID = s.Song_ID
+INNER JOIN purchase AS p ON p.Book_ID = mb.Book_ID
+INNER JOIN user_account AS ua ON ua.User_ID = p.User_ID
+INNER JOIN song_progress AS sp ON sp.User_ID = p.User_ID 
+AND sp.Book_ID = p.Book_ID 
+AND sp.Song_ID = s.Song_ID
+WHERE Username = 'Kodawg395';
+
+SELECT * FROM user_account
+WHERE Username = 'Kodawg395';
+
+INSERT INTO purchase VALUES
+	(1, '8153d61f-06f9-4228-b059-3a619f49801c');
+
+INSERT INTO song_progress VALUES
+	(1, '8153d61f-06f9-4228-b059-3a619f49801c', 1, 'Not Started'),
+    (1, '8153d61f-06f9-4228-b059-3a619f49801c', 2, 'Not Started'),
+    (1, '8153d61f-06f9-4228-b059-3a619f49801c', 3, 'Not Started'),
+    (1, '8153d61f-06f9-4228-b059-3a619f49801c', 4, 'Not Started'),
+    (1, '8153d61f-06f9-4228-b059-3a619f49801c', 5, 'Not Started'),
+    (1, '8153d61f-06f9-4228-b059-3a619f49801c', 6, 'Not Started'),
+    (1, '8153d61f-06f9-4228-b059-3a619f49801c', 7, 'Not Started'),
+    (1, '8153d61f-06f9-4228-b059-3a619f49801c', 8, 'Not Started');

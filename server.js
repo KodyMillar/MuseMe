@@ -23,6 +23,7 @@ app.use("/auth", authRoute);
 
 app.get("/buy", buyController.listBooks);
 app.get("/buy/search", buyController.searchBooks);
+app.get("/buy/purchase/:id", buyController.purchaseBook);
 app.get("/play", playController.playOverview);
 
 app.listen(process.env.PORT, () => {

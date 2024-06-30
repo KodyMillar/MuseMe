@@ -16,7 +16,7 @@
 <div id="buy-grid">
     <% for (let book of songBooks) { %>
     <div class="book-div">
-        <img src="/images/purchase/<%= book.image_link %>" width="200" height="300">
+        <a href="/buy/purchase/<%= book.Book_ID %>"><img src="/images/purchase/<%= book.image_link %>" width="200" height="300"></a>
         <div class="book-labels"><h5><%= book.Instrument %></h5><h5><%= book.Difficulty %></h5></div>
         <h4><%= book.Book_Name %></h4>
     </div>

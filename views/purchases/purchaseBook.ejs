@@ -1,0 +1,11 @@
+<%- include("../partials/navbar.ejs") %>
+
+<div class="purchase-grid">
+	<div class="purchase-book-img">
+		<img src="/images/purchase/<%= book.image_link %>" alt="<%= book.Book_Name %>">
+	</div>
+	<div>
+		<h1 id="book-name"><%= book.Book_Name %></h1>
+		<button class="purchase-book-button">Purchase Book</button>
+	</div>
+</div>
