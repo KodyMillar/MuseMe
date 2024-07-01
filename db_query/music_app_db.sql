@@ -115,7 +115,6 @@ INSERT INTO song (Song_Name, Difficulty, Image_Link, pages) VALUES
     ('Waltz in D-flat Major', 'Grade 7', 'chopin/Waltz_in_D-flat_major_Op.64_No.1', 3),
     ('Fantaisie Impromptu in C Minor', 'Grade 8', 'chopin/Fantaisie-Impromptu_in_C_Minor_Chopin', 5);
 
-
 INSERT INTO book_song VALUES 
     (1, 1),
     (1, 2),
@@ -211,6 +210,8 @@ AND sp.Book_ID = p.Book_ID
 AND sp.Song_ID = s.Song_ID
 WHERE Username = 'Kodawg395';
 
+DESCRIBE song_progress;
+
 SELECT * FROM user_account
 WHERE Username = 'Kodawg395';
 
@@ -226,3 +227,30 @@ INSERT INTO song_progress VALUES
     (1, '8153d61f-06f9-4228-b059-3a619f49801c', 6, 'Not Started'),
     (1, '8153d61f-06f9-4228-b059-3a619f49801c', 7, 'Not Started'),
     (1, '8153d61f-06f9-4228-b059-3a619f49801c', 8, 'Not Started');
+    
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM song_progress;
+SET SQL_SAFE_UPDATES = 1;
+
+DELETE FROM purchase
+WHERE Book_ID = 1;
+
+SELECT * FROM purchase;
+
+ALTER TABLE purchase
+DROP CONSTRAINT purchase_ibfk_1;
+
+ALTER TABLE purchase
+DROP CONSTRAINT purchase_user_fk;
+
+ALTER TABLE purchase
+DROP PRIMARY KEY;
+
+ALTER TABLE purchase
+ADD PRIMARY KEY (Book_ID, User_ID); 
+
+ALTER TABLE purchase
+ADD CONSTRAINT purchase_ibfk_1 FOREIGN KEY (Book_ID) REFERENCES music_book(Book_ID);
+
+ALTER TABLE purchase
+ADD CONSTRAINT purchase_user_fk FOREIGN KEY (User_ID) REFERENCES user_account(User_ID);

@@ -6,6 +6,8 @@
 	</div>
 	<div>
 		<h1 id="book-name"><%= book.Book_Name %></h1>
-		<button class="purchase-book-button">Purchase Book</button>
+		<form action="/buy/purchase-complete/<%= book.Book_ID %>" method="post">
+			<button type="submit" class="purchase-book-button">Purchase Book</button>
+		</form>
 	</div>
 </div>

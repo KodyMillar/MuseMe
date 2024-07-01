@@ -64,6 +64,55 @@ let buyController = {
             console.log(name);
             console.log(message);
         }
+    },
+
+    purchaseComplete: async (req, res) => {
+        const connection = await connectDB();
+        try {
+
+            const bookId = parseInt(req.params.id);
+            const userId = '8153d61f-06f9-4228-b059-3a619f49801c'
+    
+            await connection.beginTransaction();
+            const query1 = `INSERT INTO purchase VALUES
+            (?, ?);`
+    
+            await connection.query(query1, [bookId, userId]);
+    
+            const query2 = `SELECT * FROM music_book AS mb
+            INNER JOIN book_song AS bs ON bs.Book_ID = mb.Book_ID
+            INNER JOIN song AS s ON bs.Song_ID = s.Song_ID
+            WHERE mb.Book_ID = ?`;
+    
+            const [rows] = await connection.query(query2, [bookId]);
+            let query3 = `INSERT INTO song_progress VALUES`;
+            let songIds = [];
+
+            for (let i = 0; i < rows.length - 1; i++) {
+                query3 += `\n(1, '8153d61f-06f9-4228-b059-3a619f49801c', ?, 'Not Started'),`;
+                songIds.push(rows[i].Song_ID);
+            };
+
+            query3 += `\n(1, '8153d61f-06f9-4228-b059-3a619f49801c', ?, 'Not Started');`;
+            songIds.push(rows.pop().Song_ID);
+            
+            await connection.query(query3, songIds);
+            await connection.commit();
+
+            const query4 = `SELECT * FROM music_book
+            WHERE Book_ID = ?`
+
+            const [book] = await connection.query(query4, [bookId]);
+    
+            res.render("purchases/purchaseComplete", {
+                book: book.shift()
+            });
+
+        } catch (err) {
+            await connection.rollback();
+            console.log(err);
+        }
+
     }
 };
 
