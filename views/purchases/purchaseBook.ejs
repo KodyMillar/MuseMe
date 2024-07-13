@@ -5,9 +5,21 @@
 		<img src="/images/purchase/<%= book.image_link %>" alt="<%= book.Book_Name %>">
 	</div>
 	<div>
-		<h1 id="book-name"><%= book.Book_Name %></h1>
+		<h1 class="book-name"><%= book.Book_Name %></h1>
+		<h3 class="book-author">Frederic Chopin</h3>
+		<h3 class="book-price">$19.99</h3>
+		<h3 class="book-level">Grade 8</h3>
+		<h5 class="book-shipping">This book can be shipped</h5>
 		<form action="/buy/purchase-complete/<%= book.Book_ID %>" method="post">
 			<button type="submit" class="purchase-book-button">Purchase Book</button>
 		</form>
+		<h2>Songs included:</h2>
+		<ul>
+			<% for (let song of songs) { %>
+				<li><%= song.Song_Name %></li>
+			<% } %>
+		</ul>
+		<h2 class="book-description">Book Description</h2>
+		<p>This book has all the must-play songs from the legendary Chopin</p>
 	</div>
 </div>

@@ -180,8 +180,10 @@ a:link {
 .purchase-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 90vh;
+    grid-auto-rows: minmax(auto, max-content);
     padding-top: 10%;
+    width: 90vw;
+    margin: 0 3% 10%;
 }
 
 .purchase-book-img {
@@ -196,20 +198,56 @@ a:link {
     height: 600px;
 }
 
-#book-name {
+.book-name {
     font-size: 30px;
     color: black;
     text-align: center;
+}
+
+.book-author {
+    font-size: 18px;
+    color: rgb(57, 57, 57);
+    text-align: center;
+    margin-bottom: 15%;
+}
+
+.book-price {
+    font-size: 24px;
+    color: rgb(255, 255, 255);  
+    background-color: rgb(133, 21, 90);
+    display: inline;
+    padding: 2% 5% 2% 5%;
+    border: solid 3px rgb(198, 21, 104);
+    border-radius: 10%;
+}
+
+.book-level {
+    margin-top: 7%;
+    font-size: 20px;
+}
+
+.book-shipping {
+    font-size: 16px;
 }
 
 .purchase-book-button {
     background-color:rgb(78, 12, 79);
     color: white;
     border-radius: 4px;
-    width: 40%;
+    width: 50%;
     height: 8%;
     font-size: 20px;
+    padding-top: 2%;
+    padding-bottom: 2%;
     margin: 25% 25% 0 25%;
+    cursor: pointer;
+}
+
+.book-description {
+    border-top: solid 2px rgb(57, 57, 57);
+    margin-top: 10%;
+    padding-top: 10%;
+    font-size: 24px;
 }
 
 /* purchase complete page

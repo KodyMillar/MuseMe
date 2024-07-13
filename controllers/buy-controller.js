@@ -51,13 +51,22 @@ let buyController = {
             const connection = await connectDB();
     
             const bookId = req.params.id;
-            query = `SELECT * FROM music_book
-            WHERE Book_ID = ?`
+            const query1 = `SELECT * FROM music_book
+            WHERE Book_ID = ?`;
     
-            const [book] = await connection.query(query, [bookId]);
+            const [book] = await connection.query(query1, [bookId]);
             
+            const query2 = `SELECT * FROM song AS s
+            INNER JOIN book_song AS bs ON s.Song_ID = bs.Song_ID
+            INNER JOIN music_book AS mb ON bs.Book_ID = mb.Book_ID
+            WHERE mb.Book_ID = ?
+            LIMIT 20;`;
+
+            const [songs] = await connection.query(query2, [bookId]);
+
             res.render("purchases/purchaseBook", {
-                book: book.shift()
+                book: book.shift(),
+                songs: songs
             });
 
         } catch ({name, message}) {

@@ -72,3 +72,9 @@ closeBookButtons.forEach(button => {
 		e.target.style.cursor = 'pointer';
 	})
 })
+
+
+
+/* purchase page
+------------------------------- */
+
