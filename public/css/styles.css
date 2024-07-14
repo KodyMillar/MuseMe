@@ -208,7 +208,7 @@ a:link {
     font-size: 18px;
     color: rgb(57, 57, 57);
     text-align: center;
-    margin-bottom: 15%;
+    margin-bottom: 10%;
 }
 
 .book-price {
@@ -219,15 +219,23 @@ a:link {
     padding: 2% 5% 2% 5%;
     border: solid 3px rgb(198, 21, 104);
     border-radius: 10%;
+    text-align: center;
+}
+
+.book-price-container {
+    display: flex;
+    justify-content: center;  
 }
 
 .book-level {
     margin-top: 7%;
     font-size: 20px;
+    text-align: center;
 }
 
 .book-shipping {
     font-size: 16px;
+    text-align: center;
 }
 
 .purchase-book-button {
@@ -239,15 +247,31 @@ a:link {
     font-size: 20px;
     padding-top: 2%;
     padding-bottom: 2%;
-    margin: 25% 25% 0 25%;
+    margin: 10% 25% 10% 25%;
     cursor: pointer;
 }
 
-.book-description {
+.songs-included {
+    font-size: 18px;
+}
+
+.see-more {
+    cursor: pointer;
+}
+
+.more-songs {
+    display: none;
+}
+
+.book-description-subheader {
     border-top: solid 2px rgb(57, 57, 57);
     margin-top: 10%;
     padding-top: 10%;
     font-size: 24px;
+}
+
+.book-description-paragraph {
+    font-size: 18px;
 }
 
 /* purchase complete page

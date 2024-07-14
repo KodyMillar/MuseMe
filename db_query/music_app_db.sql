@@ -235,7 +235,8 @@ SET SQL_SAFE_UPDATES = 1;
 DELETE FROM purchase
 WHERE Book_ID = 1;
 
-SELECT * FROM purchase;
+DELETE FROM purchase
+WHERE Book_ID = 2;
 
 ALTER TABLE purchase
 DROP CONSTRAINT purchase_ibfk_1;
@@ -254,3 +255,41 @@ ADD CONSTRAINT purchase_ibfk_1 FOREIGN KEY (Book_ID) REFERENCES music_book(Book_
 
 ALTER TABLE purchase
 ADD CONSTRAINT purchase_user_fk FOREIGN KEY (User_ID) REFERENCES user_account(User_ID);
+
+ALTER TABLE music_book
+ADD COLUMN Book_Price DECIMAL (4,2) NOT NULL;
+
+ALTER TABLE music_book
+ADD COLUMN Book_Description VARCHAR(1200) NOT NULL;
+
+ALTER TABLE music_book
+ADD COLUMN Shipping BIT NOT NULL;
+
+ALTER TABLE music_book
+ADD COLUMN Book_Artist VARCHAR(30) NOT NULL;
+
+UPDATE music_book
+SET Book_Artist = 'Frederic Chopin' AND Book_Price = 49.99
+WHERE Book_ID = 1;
+
+UPDATE music_book
+SET Book_Artist = 'Frederic Chopin',
+Book_Description = CONCAT_WS('\n', 'This book has all the must-play songs and much more from the legendary Frederic Chopin. Chopin is known for his sophisticated piano solos and waltzes. This book is a must buy for chopin enthusiasts and a great book for passionate piano players wishing to master highly influential songs.', 
+						'Chopin began playing the piano when he was 4 years old, started composing music when he was 7 years old, and gave private piano concerts when he was only 8 years old.',
+						'This book starts off with a well known piece that isn\'t too hard or too easy: Waltz No.7 in C# Minor. This piece will kick you off with a thought provoking melody and will prepare you for Chopin\'s more sophisticated pieces like Waltz in D-flat Major and Fantaisie Impromptu in C Minor. The book also includes what is probably his most famous piece: Nocturne Op 9 No 2 E Flat Major. No matter what song you choose, there will always be a new technique and variation to learn from Chopin\'s music.'),
+Book_Price = 49.99,
+Shipping = 1
+WHERE Book_ID = 1;
+
+UPDATE music_book
+SET Book_Description = ''
+WHERE Book_ID = 1;
+
+SELECT * FROM music_book
+WHERE Book_ID = 1;
+
+
+UPDATE music_book
+SET Book_Price = '20.95'
+WHERE Book_ID = 2;
+
