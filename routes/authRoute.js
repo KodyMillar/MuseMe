@@ -1,9 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const authController = require("../controllers/auth-controller");
-const db = require("../config/db");
-const bcrypt = require("bcrypt");
-const userService = require("../services/userService");
 
 router.get("/login", async (req, res) => {
 	res.render("authentication/login", {
