@@ -11,6 +11,8 @@
 		<div>
 		<% for (let song of bookSongs[book]) { %>
 		<div class="song-pages" id="song-pages-<%= song.Song_ID %>">
+			<button class="close-full-screen-button">Exit Full Screen</buton>
+			<button class="full-screen-button">Full Screen</button>
 			<% for (let i=1; i <= song.pages; i++) { %>
 				<img src="/images/songs/<%= song.Image_Link %>/page<%= i %>.jpg" class="book-song">
 			<% } %>

@@ -319,7 +319,6 @@ a:link {
     height: 100%;
     z-index: 99;
     background-color: black;
-    /* opacity: 80%; */
     overflow-y: scroll;
     visibility: hidden;
 }
@@ -333,9 +332,9 @@ a:link {
     width: 49vw;
     height: 71.4vw;
     margin: 0 5% 2% 1%;
-    /* position: fixed; */
     z-index: 100;
-    /* opacity: 100%; */
+    transform-origin: top;
+    transition: transform 1s ease, margin-bottom 1s ease;
 }
 
 .songs-list {
@@ -369,6 +368,8 @@ a:link {
 .song-pages {
     visibility: hidden;
     position: absolute;
+    width: 100%;
+    height: auto;
 }
 
 .close-book-button {
@@ -396,6 +397,48 @@ a:link {
     text-align: center;
 }
 
+.full-screen-button {
+    background-color: black;
+    display: inline;
+    position: fixed;
+    top: 5%;
+    left: 5%;
+    color: white;
+    height: 5%;
+    z-index: 101;
+    cursor: pointer;
+    opacity: 50%;
+}
+
+.full-screen-button:hover {
+    opacity: 100%;
+}
+
+.full-screen-button:active {
+    opacity: 100%;
+}
+
+.close-full-screen-button {
+    background-color: rgb(177, 38, 38);
+    border-color: rgb(78, 12, 79);
+    color: white;
+    position: fixed;
+    top: 2%;
+    left: 2%;
+    height: 5%;
+    opacity: 50%;
+    visibility: hidden;
+    z-index: 101;
+    cursor: pointer;
+}
+
+.close-full-screen-button:hover {
+    opacity: 100%;
+}
+
+.close-full-screen-button:active {
+    opacity: 100%;
+}
 
 
 /* login page

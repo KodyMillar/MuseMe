@@ -1,3 +1,6 @@
+/* Play page
+----------------------------------------*/
+
 const songsList = document.querySelectorAll('.song');
 var currentSong = null
 songsList.forEach(song => {
@@ -71,8 +74,72 @@ closeBookButtons.forEach(button => {
 	button.addEventListener('mouseover', (e) => {
 		e.target.style.cursor = 'pointer';
 	})
-})
+});
 
+
+const fullScreenButtons = document.querySelectorAll('.full-screen-button');
+const exitFullScreenButtons = document.querySelectorAll('.close-full-screen-button');
+
+fullScreenButtons.forEach(button => {
+	button.addEventListener('click', () => {
+		button.style.display = 'none';
+
+		const songDiv = button.parentElement;
+		const songPages = songDiv.children;
+		
+		for (i=2; i < songPages.length; i++) {
+			// songPages[i].style.height = '200vh';
+			// songPages[i].style.width = '75vw';
+			// songPages[i].style.transform = 'scale(1.5)';
+			songPages[i].style.transform = 'translateX(25vw) scale(1.3)';
+			songPages[i].style.marginTop = 'auto';
+			songPages[i].style.marginBottom = '25%';
+		};
+
+		const closeCurrentFullScreenButton = songDiv.querySelector('.close-full-screen-button');
+		closeCurrentFullScreenButton.style.visibility = 'visible';
+		
+		const songPagesDiv = songDiv.parentElement;
+		songPagesDiv.style.width = '100%';
+		// songPagesDiv.parentElement.style.display = 'block';
+		
+		// songDiv.style.display = 'flex';
+		songDiv.style.overflow = 'auto';
+		// songDiv.style.flexDirection = 'column';
+		// songDiv.style.gap = '60vh';
+		// songDiv.style.alignItems = 'center';
+		// songDiv.style.position = 'static';
+
+		const songsList = songPagesDiv.nextElementSibling;
+		songsList.style.visibility = 'hidden';
+
+	});
+});
+
+
+exitFullScreenButtons.forEach(button => {
+	button.addEventListener('click', () => {
+		button.style.visibility = 'hidden';
+		
+		const songDiv = button.parentElement;
+		const songPages = songDiv.children;
+		
+		for (i=2; i < songPages.length; i++) {
+			songPages[i].style.transform = '';
+			songPages[i].style.marginTop = '';
+			songPages[i].style.marginBottom = '2%';
+		};
+
+		const fullScreenButton = songDiv.querySelector('.full-screen-button');
+		fullScreenButton.style.display = 'inline';
+
+		const songPagesDiv = songDiv.parentElement;
+		// songPagesDiv.parentElement.style.display = 'grid';
+
+		const songsList = songPagesDiv.nextElementSibling;
+		songsList.style.visibility = '';
+	});
+});
 
 
 /* purchase page
@@ -108,3 +175,5 @@ function readMore(e) {
 
 	
 };
+
+
