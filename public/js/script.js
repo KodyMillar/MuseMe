@@ -167,25 +167,33 @@ songProgressLabel.forEach(div => {
 
 
 songProgressLabel.forEach(div => {
+	const divColor = window.getComputedStyle(div, null).getPropertyValue('background-color');
+
 	div.addEventListener('mouseover', () => {
 		div.style.backgroundColor = '#8b61c9'
 	});
 
 	div.addEventListener('mouseleave', () => {
-		div.style.backgroundColor = 'rgb(191, 191, 191)';
+		div.style.backgroundColor = divColor;
 	})
 
 	div.addEventListener('click', (e) => {
 		const dropdown = e.currentTarget.querySelector('.song-progress-dropdown');
+		const arrow = e.currentTarget.querySelector('.song-progress-arrow');
+		
 		e.stopPropagation();
 		dropdown.classList.toggle('hidden');
 		
 		if (dropdown.style.height == '0px' || ! dropdown.style.height) {
 			dropdown.style.height = '25vh';
+			arrow.style.transform = 'rotate(225deg)';
 		}
 		else if (dropdown.style.height == '25vh') {
 			dropdown.style.height = '0';
+			arrow.style.transform = 'rotate(45deg)';
 		}
+
+
 
 		songProgressLabel.forEach(label => {
 			const otherDropDown = label.querySelector('.song-progress-dropdown');

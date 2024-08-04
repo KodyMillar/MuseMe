@@ -18,6 +18,15 @@ const playController = {
 			bookSongs: songsByBook
 
 		});
+	},
+
+	changeSongProgress: async (req, res) => {
+		const progress = req.body['song-progress']
+		const [bookId, songId, userId] = req.body['song-progress-id'].split('~').splice(1);
+		
+		await playService.changeSongProgress(progress, bookId, songId, userId);
+
+		res.redirect('/play');
 	}
 };
 

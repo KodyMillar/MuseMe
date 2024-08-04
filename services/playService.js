@@ -10,7 +10,7 @@ const playService = {
 			INNER JOIN user_account AS ua ON ua.User_ID = p.User_ID
 			WHERE username = ?`
 	
-			const query2 = `SELECT Username, Book_Name, mb.Book_ID, s.Song_ID, Song_Name, s.Difficulty, sp.progress, s.Image_Link, pages FROM music_book AS mb 
+			const query2 = `SELECT ua.User_ID, Username, Book_Name, mb.Book_ID, s.Song_ID, Song_Name, s.Difficulty, sp.progress, s.Image_Link, pages FROM music_book AS mb 
 			INNER JOIN book_song AS bs ON mb.Book_ID = bs.Book_ID 
 			INNER JOIN song AS s ON bs.Song_ID = s.Song_ID
 			INNER JOIN purchase AS p ON p.Book_ID = mb.Book_ID
@@ -26,6 +26,29 @@ const playService = {
 			return {books: books, songs: songs};
 	
 		} catch ({name, message, err}) {
+			console.log(name);
+			console.log(message);
+			throw err;
+		}
+
+	},
+
+	changeSongProgress: async (progress, bookId, songId, userId) => {
+		const connection = await connectDB();
+
+		try {
+			await connection.beginTransaction();
+
+			const query = `UPDATE song_progress
+			SET progress = ?
+			WHERE Book_ID = ? AND Song_ID = ? AND User_ID = ?`;
+	
+			const [rows] = await connection.query(query, [progress, bookId, songId, userId]);
+
+			await connection.commit();
+
+		} catch ({name, message, err}) {
+			await connection.rollback();
 			console.log(name);
 			console.log(message);
 			throw err;

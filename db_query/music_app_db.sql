@@ -294,3 +294,15 @@ UPDATE music_book
 SET Book_Price = '20.95'
 WHERE Book_ID = 2;
 
+USE Music_App;
+DESCRIBE song_progress;
+
+UPDATE song_progress
+SET progress = "Not Started"
+WHERE Book_ID = 1 AND Song_ID = 1;
+
+UPDATE song_progress
+SET progress = "Not Started"
+WHERE Book_ID = 1 AND Song_ID = 2;
+
+SELECT * FROM song_progress;
