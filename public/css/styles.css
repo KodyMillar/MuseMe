@@ -1,5 +1,5 @@
 body {
-    margin-top: auto;
+    margin: auto;
     height: auto;
     width: auto;
 }
@@ -110,6 +110,10 @@ a:link {
     height: 100%;
     border-radius: 2%;
     object-fit: cover;
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 
@@ -369,10 +373,58 @@ a:link {
 
 .user-song-info {
     margin-right: 5%;
+    width: 20%;
 }
 
 .song-name {
     font-size: 20px;
+}
+
+.song-progress {
+    border-radius: 3px;
+    text-align: center;
+    width: 100%;
+    position: relative;
+}
+
+.song-progress > h4 {
+    margin-bottom: 0;
+}
+
+.song-progress > p {
+    margin-top: 0;
+}
+
+.song-progress-arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    margin-bottom: 1%;
+}
+
+.song-progress-dropdown {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: space-around;
+    background-color: beige;
+    width: 150%;
+    /* height: 300%; */
+    height: 0;
+    top: 100%;
+    right: -33%;
+    z-index: 100;
+    border-radius: 0 0 2px 2px;
+    transition: height 0.2s, visibility 0.1s;
+}
+
+.song-progress-dropdown-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid rgb(198, 198, 198);
 }
 
 .song-pages {
@@ -395,6 +447,7 @@ a:link {
     border-radius: 5%;
     text-align: center;
     align-content: center;
+    box-shadow: 0 4px 5px rgb(78, 12, 79);
 }
 
 .close-book-button > h6 {
@@ -450,6 +503,7 @@ a:link {
 .close-full-screen-button:active {
     opacity: 100%;
 }
+
 
 
 /* login page

@@ -282,8 +282,9 @@ Shipping = 1
 WHERE Book_ID = 1;
 
 UPDATE music_book
-SET Book_Description = ''
+SET Shipping = 1
 WHERE Book_ID = 1;
+
 
 SELECT * FROM music_book
 WHERE Book_ID = 1;

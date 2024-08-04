@@ -26,8 +26,28 @@
 				<div class="song" id="song-id-<%= song.Song_ID %>">
 					<h3 class="song-name"><%= song.Song_Name %></h3>
 					<div class="user-song-info">
-						<h4><%= song.Difficulty %></h4>
-						<h4><%= song.progress %></h4>
+						<h4 class="song-difficulty"><%= song.Difficulty %></h4>
+						<div class="song-progress">
+							<h4><%= song.progress %></h4>
+							<p class="arrow-parent"><i class="song-progress-arrow"></i></p>
+							<form action="/play" method="post">
+							<fieldset class="song-progress-dropdown hidden">
+								<div class="song-progress-dropdown-item">
+									<input type="radio" id="not-started-<%= song.Song_ID %>-<%= song.User_ID %>" name="song-progress" value="Not Started"/>
+									<label for="not-started-<%= song.Song_ID %>-<%= song.User_ID %>">Not Started</label>
+								</div>
+								<div class="song-progress-dropdown-item">
+									<input type="radio" id="in-progress-<%= song.Song_ID %>-<%= song.User_ID %>" name="song-progress" value="In Progress" />
+									<label for="in-progress-<%= song.Song_ID %>-<%= song.User_ID %>">In Progress</label>
+								</div>
+								<div class="song-progress-dropdown-item">
+									<input type="radio" id="completed-<%= song.Song_ID %>-<%= song.User_ID %>" name="song-progress" value="Completed" />
+									<label for="completed-<%= song.Song_ID %>-<%= song.User_ID %>">Completed</label>
+								</div>
+								<input type="submit" value="submit" />
+							</fieldset>
+							</form>
+						</div>
 					</div>
 				</div>
 			<% } %>

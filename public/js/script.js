@@ -13,6 +13,15 @@ songsList.forEach(song => {
 		}
 		currentSong = songToDisplay;
 		songToDisplay.style.visibility = 'visible';
+
+		songProgressLabel.forEach(label => {
+			const otherDropDown = label.querySelector('.song-progress-dropdown');
+
+			if (! otherDropDown.classList.contains('hidden')) {
+				otherDropDown.classList.add('hidden');
+				otherDropDown.style.height = '0';
+			}
+		})
 	});
 
 	song.addEventListener('mouseover', (e) => {
@@ -141,6 +150,55 @@ exitFullScreenButtons.forEach(button => {
 	});
 });
 
+const songProgressLabel = document.querySelectorAll('.song-progress');
+
+songProgressLabel.forEach(div => {
+	const label = div.children[0];
+	if (label.textContent == "Not Started") {
+		div.style.backgroundColor = "#bfbfbf";
+	}
+	else if (label.textContent == "In Progress") {
+		div.style.backgroundColor = "#f0eb89";
+	}
+	else if (label.textContent == "Completed") {
+		div.style.backgroundColor = "#38add1";
+	}
+})
+
+
+songProgressLabel.forEach(div => {
+	div.addEventListener('mouseover', () => {
+		div.style.backgroundColor = '#8b61c9'
+	});
+
+	div.addEventListener('mouseleave', () => {
+		div.style.backgroundColor = 'rgb(191, 191, 191)';
+	})
+
+	div.addEventListener('click', (e) => {
+		const dropdown = e.currentTarget.querySelector('.song-progress-dropdown');
+		e.stopPropagation();
+		dropdown.classList.toggle('hidden');
+		
+		if (dropdown.style.height == '0px' || ! dropdown.style.height) {
+			dropdown.style.height = '25vh';
+		}
+		else if (dropdown.style.height == '25vh') {
+			dropdown.style.height = '0';
+		}
+
+		songProgressLabel.forEach(label => {
+			const otherDropDown = label.querySelector('.song-progress-dropdown');
+
+			if (! otherDropDown.classList.contains('hidden') && otherDropDown != dropdown) {
+				otherDropDown.classList.add('hidden');
+				otherDropDown.style.height = '0';
+			}
+		})
+	})
+})
+
+
 
 /* purchase page
 ------------------------------- */
@@ -175,5 +233,4 @@ function readMore(e) {
 
 	
 };
-
 
