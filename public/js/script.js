@@ -68,6 +68,7 @@ userBooks.forEach(book => {
 		const bookID = e.target.id.split('-').pop(-1);
 		currentBook = document.getElementById(`book-window-id-${bookID}`);
 		currentBook.style.visibility = 'visible';
+		document.body.style.overflowY = 'hidden';
 	});
 
 	book.addEventListener('mouseover', (e) => {
@@ -91,7 +92,11 @@ const closeBookButtons = document.querySelectorAll('.close-book-button');
 closeBookButtons.forEach(button => {
 	button.addEventListener('click', () => {
 		currentBook.style.visibility = 'hidden';
-		currentSong.style.visibility = 'hidden';
+		if (currentSong) {
+			currentSong.style.visibility = 'hidden';
+		}
+
+		document.body.style.overflowY = 'scroll';
 	})
 
 	button.addEventListener('mouseover', (e) => {
@@ -221,6 +226,28 @@ songProgressLabel.forEach(div => {
 	})
 })
 
+
+
+/* filtered songs page 
+-------------------------------*/
+
+const playSongButton = document.querySelectorAll('.play-song-button');
+
+console.log(playSongButton)
+
+playSongButton.forEach(button => {
+	const buttonColor = window.getComputedStyle(button).getPropertyValue('background-color');
+
+	button.addEventListener('mouseover', () => {
+		button.style.backgroundColor = '#8b61c9';
+		button.style.color = '#EFEFEF';
+	});
+
+	button.addEventListener('mouseleave', () => {
+		button.style.backgroundColor = buttonColor;
+		button.style.color = '#000000'
+	})
+})
 
 
 /* purchase page
