@@ -1,9 +1,30 @@
 <%- include("../partials/navbar.ejs") %>
 <body>
 	<h1 id="play-page-header">Your Books</h1>
+	<div class="user-book-filters">
+		<form action="/play/search/song-progress/<%= userId %>" method="get" class="user-book-filter-button" id="left-filter" >
+			<input type="submit" value="Not Started" name="user-book-filter" class="inner-button"/>
+		</form>
+		<button class="user-book-filter-button" id="center-filter"><span class="inner">In Progress</span></button>
+		<button class="user-book-filter-button" id="right-filter"><span class="inner">Completed</span></button>
+	</div>
+	<form id="play-page-search">
+		<input type="search" placeholder="search your books..."/>
+		<select id="play-search-type" action="/play" method="get">
+			<option value="book">Book</option>
+			<option value="song">Song</option>
+		</select>
+	</form>
 	<div id="play-grid">
 	<% for (let book of userBooks) { %>
-		<img src="/images/purchase/<%= book.image_link %>" width="220" height="340" class="user-book-img" id="book-id-<%= book.Book_ID %>">
+		<div class="user-book-listing">
+			<img src="/images/purchase/<%= book.image_link %>" width="220" height="340" class="user-book-img" 	id="book-id-<%= book.Book_ID %>">
+			<h4><%= book.Book_Name %></h4>
+			<div class="user-book-info">
+				<h5>Songs Completed: <%= songsCompleted[book.Book_ID] %></h5>
+				<h5>Difficulty: <%= book.Difficulty %></h5>
+			</div>
+		</div>
 	<% } %>
 	</div>
 	<% for (let book in bookSongs) { %>

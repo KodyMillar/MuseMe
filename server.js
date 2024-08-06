@@ -28,6 +28,7 @@ app.post("/buy/purchase-complete/:id", buyController.purchaseComplete);
 
 app.get("/play", playController.playOverview);
 app.post("/play", playController.changeSongProgress);
+app.get("/play/search/song-progress/:userId", playController.searchSongProgress);
 
 app.listen(process.env.PORT, () => {
   console.log(`App listening on port ${process.env.PORT}.`);

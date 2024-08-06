@@ -305,4 +305,28 @@ UPDATE song_progress
 SET progress = "Not Started"
 WHERE Book_ID = 1 AND Song_ID = 2;
 
-SELECT * FROM song_progress;
+SELECT * FROM user_account;
+
+ALTER TABLE music_book
+ADD COLUMN Num_Songs INT DEFAULT 0;
+
+DELIMITER $$
+CREATE TRIGGER after_song_insert
+	AFTER INSERT ON book_song
+    FOR EACH ROW
+BEGIN
+	UPDATE music_book
+    SET Num_Songs = Num_Songs + 1
+    WHERE Book_ID = NEW.Book_ID;
+END$$
+DELIMITER ; 
+
+UPDATE music_book
+SET Num_Songs = 8
+WHERE Book_ID = 1;
+
+SELECT CONCAT(SUM(CASE WHEN sp.progress = 'Completed' THEN 1 ELSE 0 END), '/', MAX(mb.Num_Songs)) AS 'completed' FROM music_book AS mb
+INNER JOIN purchase AS p ON mb.Book_ID = p.Book_ID
+INNER JOIN song_progress AS sp ON sp.Book_ID = p.Book_ID AND sp.User_ID = p.User_ID
+WHERE sp.User_ID = '8153d61f-06f9-4228-b059-3a619f49801c'
+GROUP BY sp.progress;

@@ -3,7 +3,8 @@
 
 const songsList = document.querySelectorAll('.song');
 var currentSong = null
-songsList.forEach(song => {
+
+ songsList.forEach(song => {
 	song.addEventListener('click', (e) => {
 		console.log(currentSong)
 		const songID = e.target.closest('.song').id.split('-').pop(-1);
@@ -20,6 +21,9 @@ songsList.forEach(song => {
 			if (! otherDropDown.classList.contains('hidden')) {
 				otherDropDown.classList.add('hidden');
 				otherDropDown.style.height = '0';
+
+				const arrow = label.querySelector('.song-progress-arrow');
+				arrow.style.transform = 'rotate(45deg)';
 			}
 		})
 	});
@@ -193,14 +197,15 @@ songProgressLabel.forEach(div => {
 			arrow.style.transform = 'rotate(45deg)';
 		}
 
-
-
 		songProgressLabel.forEach(label => {
 			const otherDropDown = label.querySelector('.song-progress-dropdown');
 
 			if (! otherDropDown.classList.contains('hidden') && otherDropDown != dropdown) {
 				otherDropDown.classList.add('hidden');
 				otherDropDown.style.height = '0';
+
+				const arrow = label.querySelector('.song-progress-arrow');
+				arrow.style.transform = 'rotate(45deg)';
 			}
 		})
 	})

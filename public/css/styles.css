@@ -291,9 +291,10 @@ a:link {
 
 #play-page-header {
     padding-top: 10%;
-    margin-top: 0;
+    margin: 0 10% 5% 10%;
     text-align: center;
     font-size: 48px;
+    border-bottom: 5px groove black;
 }
 
 #play-grid {
@@ -340,6 +341,92 @@ a:link {
     transform-origin: top;
     transition: transform 1s ease, margin-bottom 1s ease;
 }
+
+.user-book-listing {
+    width: 220px;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.user-book-listing > h4 {
+    margin-bottom: 0;
+}
+
+.user-book-info {
+    display: inline-flex;
+    justify-content: space-between; 
+}
+
+.user-book-info > h5 {
+    margin-top: 5%;
+}
+
+.user-book-filters {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 0;
+    margin-bottom: 5%;
+}
+
+.user-book-filter-button {
+    background-color: rgb(51, 51, 51);
+    color: white;
+    width: 18%;
+    height: 35px;
+    border: none;
+    /* border: 10px groove rgb(51, 51, 51); */
+}
+
+#left-filter {
+    padding: 0.25% 2px 0.25% 2%;
+    border-radius: 6px 0 0 6px;
+}
+
+#center-filter {
+    border-radius: 3px;
+}
+
+#right-filter {
+    padding: 0.25% 2% 0.25% 2px;
+    border-radius: 0 3px 3px 0;
+}
+
+.inner-button {
+    background-color: black;
+    width: 90%;
+    height: 95%;
+    display: block;
+    margin: 0;
+    width: 100%;
+    border: none;
+    border-left: 1px solid rgb(210, 210, 210);
+    border-radius: 9px 0 0 9px;
+    cursor: pointer;
+    color: white;
+}
+
+#play-page-search {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    height: 5vh;
+    margin-bottom: 5%;
+}
+
+#play-page-search > input {
+    width: 40%;
+    height: 100%;
+}
+
+#play-search-type {
+    width: 10%;
+    background-color: rgb(189, 153, 205);
+    height: 100%;
+}
+
+/* .side {
+    background-color: white;
+} */
 
 .songs-list {
     display: flex;
@@ -503,6 +590,14 @@ a:link {
     opacity: 100%;
 }
 
+
+/* filtered songs
+------------------------------------*/
+
+#song-filter-header {
+    padding-top: 10%;
+    text-align: center;
+}
 
 
 /* login page
