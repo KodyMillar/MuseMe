@@ -390,10 +390,11 @@ a:link {
 .user-book-filter-button {
     background-color: rgb(51, 51, 51);
     color: white;
-    width: 18%;
+    width: 20%;
     height: 35px;
     border: none;
     box-shadow: 1px 1px 2px black;
+    position: relative;
     /* border: 10px groove rgb(51, 51, 51); */
 }
 
@@ -427,12 +428,16 @@ a:link {
 
 #inner-button-left {
     border-left: 1px solid rgb(210, 210, 210);
+    border-bottom: 1px solid rgb(91, 91, 91);
+    border-top: 1px solid rgb(91, 91, 91);
     border-radius: 9px 0 0 9px;
 }
 
 #inner-button-center {
     border-left: 1px solid rgb(210, 210, 210);
     border-right: 1px solid rgb(210, 210, 210);
+    border-bottom: 1px solid rgb(91, 91, 91);
+    border-top: 1px solid rgb(91, 91, 91);
     border-radius: 9px 9px 9px 9px;
     width: 90%;
     margin-left: 5%;
@@ -440,7 +445,38 @@ a:link {
 
 #inner-button-right {
     border-right: 1px solid rgb(210, 210, 210);
+    border-bottom: 1px solid rgb(91, 91, 91);
+    border-top: 1px solid rgb(91, 91, 91);
     border-radius: 0 9px 9px 0;
+}
+
+.button-edge {
+    background-color: rgb(11, 11, 11);
+    margin-left: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 31px;
+    height: 100%;
+}
+
+#button-edge-left {
+    border-radius: 3px 14px 14px 3px;
+    border-right: 1px solid white;
+    clip-path: polygon(0 0, 100% 17.5%, 100% 83.5%, 0 100%);
+}
+
+/* #edge-button-center {
+    border-radius: 14px 14px 14px 14px;
+    border-right: 1px solid white;
+    clip-path: polygon(0 0, 100% 17.5%, 100% 83.5%, 0 100%);
+} */
+
+#button-edge-right {
+    border-radius: 14px 3px 3px 14px;
+    border-right: 1px solid white;
+    clip-path: polygon(100% 17.5%, 0 0, 0 100%, 100% 83.5%);
+    float: right;
 }
 
 .play-page-search {

@@ -3,12 +3,15 @@
 	<h1 id="play-page-header">Your Books</h1>
 	<div class="user-book-filters">
 		<form action="/play/search/song-progress/<%= userId %>" method="get" class="user-book-filter-button" id="left-filter" >
+			<span class="button-edge" id="button-edge-left"></span>
 			<input type="submit" value="Not Started" name="user-book-filter" class="inner-button" id="inner-button-left"/>
 		</form>
 		<form action="/play/search/song-progress/<%= userId %>" method="get" class="user-book-filter-button" id="center-filter">
+			<span class="button-edge" id="button-edge-center"></span>
 			<input type="submit" value="In Progress" name="user-book-filter" class="inner-button" id="inner-button-center">
 		</form>
 		<form action="/play/search/song-progress/<%= userId %>" method="get" class="user-book-filter-button" id="right-filter"> 
+			<span class="button-edge" id="button-edge-right"></span>
 			<input type="submit" value="Completed" name="user-book-filter" class="inner-button" id="inner-button-right">
 		</form>
 	</div>
