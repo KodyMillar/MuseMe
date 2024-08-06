@@ -66,13 +66,23 @@ var currentBook = null;
 userBooks.forEach(book => {
 	book.addEventListener('click', (e) => {
 		const bookID = e.target.id.split('-').pop(-1);
-		currentBook = document.getElementById(`book-window-id-${bookID}`)
+		currentBook = document.getElementById(`book-window-id-${bookID}`);
 		currentBook.style.visibility = 'visible';
-	})
+	});
 
 	book.addEventListener('mouseover', (e) => {
 		e.target.style.cursor = 'pointer';
-	})
+	});
+
+	const bookId = book.id.split('-').pop(-1);
+	const bookWindow = document.getElementById(`book-window-id-${bookId}`);
+	const bookWindowVisibility = window.getComputedStyle(bookWindow).getPropertyValue('visibility');
+
+	if (bookWindowVisibility == 'visible') {
+		currentBook = bookWindow;
+		currentSong = bookWindow.querySelector('.song-pages-visible');
+	}
+	
 })
 
 

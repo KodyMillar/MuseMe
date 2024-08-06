@@ -2,17 +2,23 @@ const playService = require('../services/playService');
 
 const playController = {
 	playOverview: async (req, res) => {
-		try {
+		try {	
+			let bookToOpen;
+			let songToOpen;	
+			if (req.query['play-song']) {
+				bookToOpen = req.query.book;
+				songToOpen = req.query.song;
+			}
 
 			const {books, songs} = await playService.getUserBooks('Kodawg395');
 			const songsCompleted = await playService.getSongsCompleted('8153d61f-06f9-4228-b059-3a619f49801c');
 	
 			let songsByBook = {}
 			songs.forEach(song => {
-				if (!songsByBook[song.Book_Name]) {
-					songsByBook[song.Book_Name] = [];
+				if (!songsByBook[song.Book_ID]) {
+					songsByBook[song.Book_ID] = [];
 				};
-				songsByBook[song.Book_Name].push(song);
+				songsByBook[song.Book_ID].push(song);
 			});
 	
 			let songsCompletedByBook = {}
@@ -26,7 +32,9 @@ const playController = {
 				userBooks: books,
 				bookSongs: songsByBook,
 				songsCompleted: songsCompletedByBook,
-				userId: userId
+				userId: userId,
+				bookToOpen: bookToOpen,
+				songToOpen: songToOpen
 			});
 
 		} catch (err) {
@@ -37,7 +45,7 @@ const playController = {
 
 	changeSongProgress: async (req, res) => {
 		const progress = req.body['song-progress']
-		const [bookId, songId, userId] = req.body['s ong-progress-id'].split('~').splice(1);
+		const [bookId, songId, userId] = req.body['song-progress-id'].split('~').splice(1);
 		
 		await playService.changeSongProgress(progress, bookId, songId, userId);
 

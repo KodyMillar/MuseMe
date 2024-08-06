@@ -12,7 +12,7 @@
 			<input type="submit" value="Completed" name="user-book-filter" class="inner-button">
 		</form>
 	</div>
-	<form id="play-page-search">
+	<form class="play-page-search">
 		<input type="search" placeholder="search your books..."/>
 		<select id="play-search-type" action="/play" method="get">
 			<option value="book">Book</option>
@@ -32,21 +32,29 @@
 	<% } %>
 	</div>
 	<% for (let book in bookSongs) { %>
-		<div class="book-songs-window" id="book-window-id-<%= bookSongs[book][0].Book_ID %>">
+		<% if (bookToOpen && book === bookToOpen) { %>
+			<div class="book-songs-window-visible" id="book-window-id-<%= bookSongs[book][0].Book_ID %>">
+		<% } else { %>
+			<div class="book-songs-window" id="book-window-id-<%= bookSongs[book][0].Book_ID %>">
+		<% } %>
 		<div>
 		<% for (let song of bookSongs[book]) { %>
-		<div class="song-pages" id="song-pages-<%= song.Song_ID %>">
-			<button class="close-full-screen-button">Exit Full Screen</buton>
-			<button class="full-screen-button">Full Screen</button>
-			<% for (let i=1; i <= song.pages; i++) { %>
-				<img src="/images/songs/<%= song.Image_Link %>/page<%= i %>.jpg" class="book-song">
+			<% if (songToOpen && song.Song_ID === parseInt(songToOpen)) { %>
+			<div class="song-pages-visible" id="song-pages-<%= song.Song_ID %>">
+			<% } else { %>
+			<div class="song-pages" id="song-pages-<%= song.Song_ID %>">
 			<% } %>
-		</div>
+				<button class="close-full-screen-button">Exit Full Screen</buton>
+				<button class="full-screen-button">Full Screen</button>
+				<% for (let i=1; i <= song.pages; i++) { %>
+					<img src="/images/songs/<%= song.Image_Link %>/page<%= i %>.jpg" class="book-song">
+				<% } %>
+			</div>
 		<% } %>
 		</div>
 		<div class="songs-list">
 			<div class="close-book-button"><h6>Close book</h6></div>
-			<h2 class="book-title"><%= book %></h2>
+			<h2 class="book-title"><%= bookSongs[book][0].Book_Name %></h2>
 			<% for (let song of bookSongs[book]) { %>
 				<div class="song" id="song-id-<%= song.Song_ID %>">
 					<h3 class="song-name"><%= song.Song_Name %></h3>

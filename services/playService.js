@@ -3,6 +3,7 @@ const connectDB = require('../config/db');
 const playService = {
 	getUserBooks: async (username) => {
 		try {
+
 			const connection = await connectDB();
 
 			const query1 = `SELECT * FROM music_book AS mb
@@ -84,7 +85,7 @@ const playService = {
 		try {
 			const connection = await connectDB();
 
-			const query = `SELECT mb.Book_ID, mb.Book_Name, Song_Name, sp.progress, mb.image_link FROM music_book AS mb
+			const query = `SELECT mb.Book_ID, mb.Book_Name, s.Song_ID, s.Song_Name, sp.progress, mb.image_link FROM music_book AS mb
 			INNER JOIN purchase AS p ON mb.Book_ID = p.Book_ID
 			INNER JOIN book_song AS bs ON bs.Book_ID = mb.Book_ID
 			INNER JOIN song AS s ON s.Song_ID = bs.Song_ID

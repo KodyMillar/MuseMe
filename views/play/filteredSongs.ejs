@@ -12,7 +12,7 @@
 		<input type="submit" value="Completed" name="user-book-filter" class="inner-button">
 	</form>
 </div>
-<form id="play-page-search">
+<form class="play-page-search" id="filtered-search">
 	<input type="search" placeholder="search your books..."/>
 	<select id="play-search-type" action="/play" method="get">
 		<option value="book">Book</option>
@@ -22,13 +22,20 @@
 <div id="current-filter-div">
 <h3 id="current-filter"><%= songProgress %><form action="/play" method="get"><input type="submit" value="x"/></form></h3>
 </div>
-<section id="song-filter-section" style="background-color: rgb(234, 224, 255);">
-	<% for (let bookId in filteredSongs) { %>
-		<img src="/images/purchase/<%= filteredSongs[bookId][0].image_link %>" width="220" height="340"/>
-		<div class="filtered-songs">
-		<% for (let song of filteredSongs[bookId]) { %>
-			<h3 class="filtered-song-listing"><%= song.Song_Name %></h3>
+<% if (Object.keys(filteredSongs).length == 0) { %>
+	<section class="song-filter-section" id="no-songs-found">
+			<p>No songs to display</p>
+	</section>
+<% } %>
+<% if (Object.keys(filteredSongs).length > 0) { %>
+	<section class="song-filter-section">
+		<% for (let bookId in filteredSongs) { %>
+			<img src="/images/purchase/<%= filteredSongs[bookId][0].image_link %>" width="220" height="340"/>
+			<div class="filtered-songs">
+			<% for (let song of filteredSongs[bookId]) { %>
+				<h3 class="filtered-song-listing"><%= song.Song_Name %> <form action="/play" method="get"><input type="hidden" name="song" value="<%= song.Song_ID %>"/><input type="hidden" name="book" value="<%= song.Book_ID %>"><input type="submit" value="Play song" name="play-song"/></form></h3>
+			<% } %>
+			</div>
 		<% } %>
-		</div>
 	<% } %>
 </section>
