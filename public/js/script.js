@@ -233,8 +233,6 @@ songProgressLabel.forEach(div => {
 
 const playSongButton = document.querySelectorAll('.play-song-button');
 
-console.log(playSongButton)
-
 playSongButton.forEach(button => {
 	const buttonColor = window.getComputedStyle(button).getPropertyValue('background-color');
 
@@ -248,6 +246,18 @@ playSongButton.forEach(button => {
 		button.style.color = '#000000'
 	})
 })
+
+const backButton = document.querySelector('.back-button');
+const originalBackgroundColor = window.getComputedStyle(backButton).getPropertyValue('background-color');
+
+backButton.addEventListener('mouseover', () => {
+	backButton.style.backgroundColor = 'rgb(214, 195, 69)'
+});
+
+backButton.addEventListener('mouseleave', () => {
+	backButton.style.backgroundColor = originalBackgroundColor;
+})
+
 
 
 /* purchase page

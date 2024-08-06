@@ -3,13 +3,13 @@
 	<h1 id="play-page-header">Your Books</h1>
 	<div class="user-book-filters">
 		<form action="/play/search/song-progress/<%= userId %>" method="get" class="user-book-filter-button" id="left-filter" >
-			<input type="submit" value="Not Started" name="user-book-filter" class="inner-button"/>
+			<input type="submit" value="Not Started" name="user-book-filter" class="inner-button" id="inner-button-left"/>
 		</form>
 		<form action="/play/search/song-progress/<%= userId %>" method="get" class="user-book-filter-button" id="center-filter">
-			<input type="submit" value="In Progress" name="user-book-filter" class="inner-button">
+			<input type="submit" value="In Progress" name="user-book-filter" class="inner-button" id="inner-button-center">
 		</form>
 		<form action="/play/search/song-progress/<%= userId %>" method="get" class="user-book-filter-button" id="right-filter"> 
-			<input type="submit" value="Completed" name="user-book-filter" class="inner-button">
+			<input type="submit" value="Completed" name="user-book-filter" class="inner-button" id="inner-button-right">
 		</form>
 	</div>
 	<form class="play-page-search">
@@ -28,6 +28,7 @@
 				<h5>Songs Completed: <%= songsCompleted[book.Book_ID] %></h5>
 				<h5>Difficulty: <%= book.Difficulty %></h5>
 			</div>
+			<h5 class="in-progress-count">Songs in progress: <%= songsInProgress[book.Book_ID] %></h5>
 		</div>
 	<% } %>
 	</div>

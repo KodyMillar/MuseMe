@@ -3,6 +3,7 @@ const playService = require('../services/playService');
 const playController = {
 	playOverview: async (req, res) => {
 		try {	
+			// Start with specific song open if user clicked 'Play song' from filtered songs page
 			let bookToOpen;
 			let songToOpen;	
 			if (req.query['play-song']) {
@@ -11,8 +12,8 @@ const playController = {
 			}
 
 			const {books, songs} = await playService.getUserBooks('Kodawg395');
-			const songsCompleted = await playService.getSongsCompleted('8153d61f-06f9-4228-b059-3a619f49801c');
-	
+			const songProgressCount = await playService.getSongProgressCount('8153d61f-06f9-4228-b059-3a619f49801c');
+
 			let songsByBook = {}
 			songs.forEach(song => {
 				if (!songsByBook[song.Book_ID]) {
@@ -22,8 +23,13 @@ const playController = {
 			});
 	
 			let songsCompletedByBook = {}
-			songsCompleted.forEach(songCount => {
+			songProgressCount.forEach(songCount => {
 				songsCompletedByBook[songCount.Book_ID] = songCount.completed;
+			});
+
+			songsInProgressByBook = {}
+			songProgressCount.forEach(songCount => {
+				songsInProgressByBook[songCount.Book_ID] = songCount.In_Progress;
 			});
 
 			const userId = songs[0]['User_ID'];
@@ -32,6 +38,7 @@ const playController = {
 				userBooks: books,
 				bookSongs: songsByBook,
 				songsCompleted: songsCompletedByBook,
+				songsInProgress: songsInProgressByBook,
 				userId: userId,
 				bookToOpen: bookToOpen,
 				songToOpen: songToOpen

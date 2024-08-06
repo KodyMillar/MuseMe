@@ -36,20 +36,20 @@ const playService = {
 
 	},
 
-	getSongsCompleted: async (userId) => {
+	getSongProgressCount: async (userId) => {
 		try {
 			const connection = await connectDB();
 
-			const query = `SELECT MAX(sp.Book_ID) AS Book_ID, CONCAT(SUM(CASE WHEN sp.progress = 'Completed' THEN 1 ELSE 0 END), '/', MAX(mb.Num_Songs)) AS 'completed' FROM music_book AS mb
+			const query = `SELECT MAX(sp.Book_ID) AS Book_ID, CONCAT(SUM(CASE WHEN sp.progress = 'Completed' THEN 1 ELSE 0 END), '/', MAX(mb.Num_Songs)) AS 'completed', SUM(CASE WHEN sp.progress = 'In Progress' THEN 1 ELSE 0 END) AS 'In_Progress' FROM music_book AS mb
 			INNER JOIN purchase AS p ON mb.Book_ID = p.Book_ID
 			INNER JOIN song_progress AS sp ON sp.Book_ID = p.Book_ID AND sp.User_ID = p.User_ID
 			WHERE sp.User_ID = ?
-			GROUP BY sp.progress
+			GROUP BY sp.progress AND sp.Book_ID
 			ORDER BY Book_ID;`
 	
-			const [songsCompleted] = await connection.query(query, [userId]);
+			const [songProgressCount] = await connection.query(query, [userId]);
 			
-			return songsCompleted;
+			return songProgressCount;
 		
 		} catch ({name, message, err}) {
 			console.log(name);
@@ -57,6 +57,12 @@ const playService = {
 			throw err;
 		}
 	},
+
+	// getSongsInProgress: async(userId) => {
+	// 	const connection = await connectDb();
+
+	// 	const query = ``
+	// }
 
 	changeSongProgress: async (progress, bookId, songId, userId) => {
 		const connection = await connectDB();
