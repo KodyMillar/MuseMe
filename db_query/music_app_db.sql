@@ -325,8 +325,4 @@ UPDATE music_book
 SET Num_Songs = 8
 WHERE Book_ID = 1;
 
-SELECT CONCAT(SUM(CASE WHEN sp.progress = 'Completed' THEN 1 ELSE 0 END), '/', MAX(mb.Num_Songs)) AS 'completed' FROM music_book AS mb
-INNER JOIN purchase AS p ON mb.Book_ID = p.Book_ID
-INNER JOIN song_progress AS sp ON sp.Book_ID = p.Book_ID AND sp.User_ID = p.User_ID
-WHERE sp.User_ID = '8153d61f-06f9-4228-b059-3a619f49801c'
-GROUP BY sp.progress;
+SELECT * FROM song;

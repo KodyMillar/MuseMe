@@ -84,9 +84,11 @@ const playService = {
 		try {
 			const connection = await connectDB();
 
-			const query = `SELECT * FROM song_progress AS sp
-			INNER JOIN purchase AS p ON sp.Book_ID = p.Book_ID
-			INNER JOIN music_book AS mb ON mb.Book_ID = p.Book_ID
+			const query = `SELECT mb.Book_ID, mb.Book_Name, Song_Name, sp.progress, mb.image_link FROM music_book AS mb
+			INNER JOIN purchase AS p ON mb.Book_ID = p.Book_ID
+			INNER JOIN book_song AS bs ON bs.Book_ID = mb.Book_ID
+			INNER JOIN song AS s ON s.Song_ID = bs.Song_ID
+			INNER JOIN song_progress AS sp ON sp.Book_ID = p.Book_ID AND sp.User_ID = p.User_ID AND sp.Song_ID = s.Song_ID
 			WHERE sp.User_ID = ? AND sp.progress = ?`;
 
 			const [rows] = await connection.query(query, [userId, songProgress]);

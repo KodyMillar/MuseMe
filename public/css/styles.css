@@ -597,6 +597,50 @@ a:link {
 #song-filter-header {
     padding-top: 10%;
     text-align: center;
+    margin: 0; 
+    margin-bottom: 5%;
+}
+
+#song-filter-section {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-auto-rows: 1fr auto;
+    padding: 10% 20% 10% 20%;
+    padding-top: 5%;
+    border-top: 5px groove black;
+}
+
+.filtered-songs {
+    /* border-bottom: 2px solid black; */
+}
+
+.filtered-song-listing {
+    border-bottom: 2px solid black;
+}
+
+#current-filter {
+    background-color: rgb(179, 204, 245);
+    padding: 5px 0 5px 2%;
+    border-radius: 3px;
+    display: flex;
+}
+
+#current-filter > form {
+    margin-left: 10px;
+    height: 100%;
+}
+
+#current-filter > form > input {
+    background-color: rgb(64, 97, 205);  
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid rgb(103, 164, 225);
+}
+
+#current-filter-div {
+    display: flex;
+    justify-content: center;
 }
 
 

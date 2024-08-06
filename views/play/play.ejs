@@ -5,8 +5,12 @@
 		<form action="/play/search/song-progress/<%= userId %>" method="get" class="user-book-filter-button" id="left-filter" >
 			<input type="submit" value="Not Started" name="user-book-filter" class="inner-button"/>
 		</form>
-		<button class="user-book-filter-button" id="center-filter"><span class="inner">In Progress</span></button>
-		<button class="user-book-filter-button" id="right-filter"><span class="inner">Completed</span></button>
+		<form action="/play/search/song-progress/<%= userId %>" method="get" class="user-book-filter-button" id="center-filter">
+			<input type="submit" value="In Progress" name="user-book-filter" class="inner-button">
+		</form>
+		<form action="/play/search/song-progress/<%= userId %>" method="get" class="user-book-filter-button" id="right-filter"> 
+			<input type="submit" value="Completed" name="user-book-filter" class="inner-button">
+		</form>
 	</div>
 	<form id="play-page-search">
 		<input type="search" placeholder="search your books..."/>

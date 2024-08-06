@@ -45,14 +45,29 @@ const playController = {
 	},
 
 	searchSongProgress: async (req, res) => {
-		const songProgress = req.query['user-book-filter'];
-		const userId = req.params.userId;
+		try {
+			const songProgress = req.query['user-book-filter'];
+			const userId = req.params.userId;
+	
+			const filteredSongs = await playService.getSongByProgress(userId, songProgress);
+	
+			const songsByBook = {}
+			filteredSongs.forEach(song => {
+				if (!songsByBook[song.Book_ID]) {
+					songsByBook[song.Book_ID] = [];
+				}
+				songsByBook[song.Book_ID].push(song);
+			});
+			
+			res.render("play/filteredSongs", {
+				songProgress: songProgress,
+				filteredSongs: songsByBook,
+				userId: userId
+			});
 
-		const filteredSongs = await playService.getSongByProgress(userId, songProgress);
-		
-		res.render("play/filteredSongs", {
-			songProgress: songProgress
-		});
+		} catch(err) {
+			console.log(err);
+		}
 	}
 };
 
