@@ -2,7 +2,7 @@
 <body>
 	<h2 id="song-filter-header">Your Songs: <%= songProgress %></h2>
 	<form action="/play" method="get" class="back-button-form">
-		<input type="submit" value="Back to All Books" class="back-button"/>
+		<input type="submit" value="Back to All Books" class="back-button" id="back-button-play"/>
 	</form>
 	<div class="user-book-filters">
 		<form action="/play/search/song-progress/<%= userId %>" method="get" class="user-book-filter-button" id="left-filter" >

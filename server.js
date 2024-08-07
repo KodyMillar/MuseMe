@@ -6,6 +6,7 @@ const buyController = require("./controllers/buy-controller");
 const indexController = require("./controllers/index_controller");
 const playController = require("./controllers/play-controller");
 const authController = require("./controllers/auth-controller");
+const progressController = require('./controllers/progress-controller');
 const authRoute = require("./routes/authRoute");
 
 app.set("view engine", "ejs");
@@ -29,6 +30,8 @@ app.post("/buy/purchase-complete/:id", buyController.purchaseComplete);
 app.get("/play", playController.playOverview);
 app.post("/play", playController.changeSongProgress);
 app.get("/play/search/song-progress/:userId", playController.searchSongProgress);
+
+app.get("/my-progress", progressController.getProgressPage);
 
 app.listen(process.env.PORT, () => {
   console.log(`App listening on port ${process.env.PORT}.`);

@@ -248,6 +248,7 @@ playSongButton.forEach(button => {
 })
 
 const backButton = document.querySelector('.back-button');
+
 const originalBackgroundColor = window.getComputedStyle(backButton).getPropertyValue('background-color');
 
 backButton.addEventListener('mouseover', () => {
@@ -294,3 +295,10 @@ function readMore(e) {
 	
 };
 
+const backToPurchasePageDiv = document.getElementById('back-button-purchase');
+const backToPurchasePageButton = backToPurchasePageDiv.querySelector('.back-button');
+
+backToPurchasePageButton.addEventListener('click', () => {
+	console.log(history.back());	
+	history.back();	
+})

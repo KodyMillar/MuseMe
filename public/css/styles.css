@@ -134,11 +134,17 @@ a:link {
 }
 
 #buy-sidebar-list {
-    margin-top: 15vh;
+    margin-top: 25vh;
     height: 30%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+}
+
+#buy-sidebar-list > div {
+    border-bottom: 2px solid grey;
+    padding: 10%;
+    margin: 0 5%;
 }
 
 #buy-grid {
@@ -277,6 +283,11 @@ a:link {
 
 .book-description-paragraph {
     font-size: 18px;
+}
+
+#back-button-purchase {
+    padding-top: 8%;
+    margin-left: 5%;
 }
 
 /* purchase complete page
@@ -818,3 +829,13 @@ a:link {
     background-color: purple;
     border-radius: 10px;
 }
+
+#my-progress-header {
+    padding: 10% 0 1%;
+    width: 80%;
+    margin: 0 10% 5%;
+    text-align: center;
+    border-bottom: 5px groove black;
+}
+
+#

@@ -325,8 +325,16 @@ UPDATE music_book
 SET Num_Songs = 8
 WHERE Book_ID = 1;
 
-SELECT * FROM music_book
-INNER JOIN purchase ON music_book.Book_ID = purchase.Book_ID
-INNER JOIN book_song ON book_song.Book_ID = music_book.Book_ID
-INNER JOIN song ON song.Song_ID = book_song.Song_ID
-INNER JOIN song_progress ON song_progress.Song_ID = song.Song_ID AND song_progress.Book_ID = purchase.Book_ID AND song_progress.User_ID = purchase.User_ID;
+SELECT * FROM instrument;
+SELECT * FROM user_account;
+
+INSERT INTO instrument (Instrument) VALUES
+	('Piano'),
+    ('Guitar'),
+    ('Drums'),
+    ('Violin'),
+    ('Saxophone'),
+    ('Cello');
+    
+ALTER TABLE instrument
+ADD COLUMN Player_Level VARCHAR(40);
