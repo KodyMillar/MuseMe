@@ -31,7 +31,7 @@ const passwordService = {
 	},
 
 	encryptPass: (password) => {
-		saltRounds = 10;
+		const saltRounds = 10;
 		return bcrypt.hash(password, saltRounds)
 			.catch((err) => {throw err});
 	},

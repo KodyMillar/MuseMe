@@ -93,7 +93,6 @@ const userService = {
 			const connection = await db();
 
 			const uuid = uuidv4();
-			const saltrounds = 10;
 	
 			const username = userInfo.username;
 			const password = userInfo.password;

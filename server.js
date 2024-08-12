@@ -1,21 +1,48 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const expressLayouts = require("express-ejs-layouts");
+const session = require('express-session');
+const MemoryStore = require('memorystore')(session);
+const path = require('path');
 const buyController = require("./controllers/buy-controller");
 const indexController = require("./controllers/index_controller");
 const playController = require("./controllers/play-controller");
 const authController = require("./controllers/auth-controller");
 const progressController = require('./controllers/progress-controller');
 const authRoute = require("./routes/authRoute");
+const { v4: uuidv4 } = require('uuid');
 
 app.set("view engine", "ejs");
 
 // middleware
 app.use(express.json());
-// app.use(expressLayouts);
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
+
+app.use(session({
+  genid: () => {
+    return uuidv4();
+  },
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    path: process.env.COOKIE_PATH,
+    domain: process.env.COOKIE_DOMAIN,
+    httpOnly: true,
+    secure: 'auto',
+    maxAge: 6 * 60 * 60 * 1000
+  },
+  store: new MemoryStore({
+    checkPeriod: 86400000
+  })
+}))
+
+app.use((req, res, next) => {
+  console.log(req.user);
+  console.log(req.session);
+  next();
+})
 
 app.get("/", indexController.listComposers);
 
@@ -35,5 +62,5 @@ app.get("/my-progress", progressController.getProgressPage);
 
 app.listen(process.env.PORT, () => {
   console.log(`App listening on port ${process.env.PORT}.`);
-  console.log("Running on domain " + "http://127.0.0.1:8000/");
+  console.log("Running on domain " + `${process.env.URL}`);
 })
