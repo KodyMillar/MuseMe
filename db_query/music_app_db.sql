@@ -325,9 +325,6 @@ UPDATE music_book
 SET Num_Songs = 8
 WHERE Book_ID = 1;
 
-SELECT * FROM instrument;
-SELECT * FROM user_account;
-
 INSERT INTO instrument (Instrument) VALUES
 	('Piano'),
     ('Guitar'),
@@ -336,5 +333,49 @@ INSERT INTO instrument (Instrument) VALUES
     ('Saxophone'),
     ('Cello');
     
-ALTER TABLE instrument
-ADD COLUMN Player_Level VARCHAR(40);
+ALTER TABLE instrument_players
+ADD COLUMN Level_ID INT NOT NULL;
+
+CREATE TABLE instrument_level (
+	Level_ID INT NOT NULL AUTO_INCREMENT,
+    Level VARCHAR(20) NOT NULL,
+    Song_Count INT NOT NULL,
+    Scale_Count INT NULL,
+    Chord_Count INT NULL,
+    Arpeggio INT NULL,
+    PRIMARY KEY (Level_ID)
+);
+
+ALTER TABLE instrument_players
+ADD CONSTRAINT inst_pl_level_fk FOREIGN KEY (Level_ID) REFERENCES instrument_level (Level_ID);
+
+ALTER TABLE instrument_level
+ADD COLUMN Instrument_ID INT NOT NULL;
+
+ALTER TABLE instrument_level
+ADD CONSTRAINT instrument_id_fk FOREIGN KEY (Instrument_ID) REFERENCES instrument (Instrument_ID);
+
+ALTER TABLE song
+ADD COLUMN Song_Type ENUM('Song', 'Major Scale', 'Natural Minor Scale', 'Harmonic Minor Scale', 'Melodic Minor Scale', 'Major Chord', 'Minor Chord', 'Sixth Chord', 'Seventh Chord', 'Diminished Chord', 'Triad Chord', 'Arpeggio') NOT NULL;
+
+SET SQL_SAFE_UPDATES = 0;
+
+UPDATE song
+SET Song_Type = 'Song';
+
+SET SQL_SAFE_UPDATES = 1;
+
+INSERT INTO instrument_level VALUES 
+	(1, 'Grade 1', 4, 
+    (1, 'Grade 2', 5
+    (1, 'Grade 3', 6
+    (1, 'Grade 4', 6
+    (1, 'Grade 5', 6
+    (1, 'Grade 6', 7
+    (1, 'Grade 7', 8
+    (1, 'Grade 8', 8
+    (1, 'Grade 9', 10
+    (1, 'Grade 10', 12
+
+INSERT INTO instrument_players VALUES
+	(1, '8153d61f-06f9-4228-b059-3a619f49801c', 1);
