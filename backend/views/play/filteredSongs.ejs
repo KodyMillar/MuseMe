@@ -1,0 +1,46 @@
+<%- include("../partials/navbar.ejs") %>
+<body>
+	<h2 id="song-filter-header">Your Songs: <%= songProgress %></h2>
+	<form action="/play" method="get" class="back-button-form">
+		<input type="submit" value="Back to All Books" class="back-button" id="back-button-play"/>
+	</form>
+	<div class="user-book-filters">
+		<form action="/play/search/song-progress/<%= userId %>" method="get" class="user-book-filter-button" id="left-filter" >
+			<input type="submit" value="Not Started" name="user-book-filter" class="inner-button"/>
+		</form>
+		<form action="/play/search/song-progress/<%= userId %>" method="get" class="user-book-filter-button" id="center-filter">
+			<input type="submit" value="In Progress" name="user-book-filter" class="inner-button">
+		</form>
+		<form action="/play/search/song-progress/<%= userId %>" method="get" class="user-book-filter-button" id="right-filter"> 
+			<input type="submit" value="Completed" name="user-book-filter" class="inner-button">
+		</form>
+	</div>
+	<form class="play-page-search" id="filtered-search">
+		<input type="search" placeholder="search your books..."/>
+		<select id="play-search-type" action="/play" method="get">
+			<option value="book">Book</option>
+			<option value="song">Song</option>
+		</select>
+	</form>
+	<div id="current-filter-div">
+	<h3 id="current-filter"><%= songProgress %><form action="/play" method="get"><input type="submit" value="x"/></form></h3>
+	</div>
+	<% if (Object.keys(filteredSongs).length == 0) { %>
+		<section class="song-filter-section" id="no-songs-found">
+				<p>No songs to display</p>
+		</section>
+	<% } %>
+	<% if (Object.keys(filteredSongs).length > 0) { %>
+		<section class="song-filter-section">
+			<% for (let bookId in filteredSongs) { %>
+				<img src="/images/purchase/<%= filteredSongs[bookId][0].image_link %>" width="220" height="340"/>
+				<div class="filtered-songs">
+				<% for (let song of filteredSongs[bookId]) { %>
+					<h3 class="filtered-song-listing"><%= song.Song_Name %> <form action="/play" method="get"><input type="hidden" name="song" value="<%= song.Song_ID %>"/><input type="hidden" name="book" value="<%= song.Book_ID %>"><input class="play-song-button" type="submit" value="Play song" name="play-song"/></form></h3>
+				<% } %>
+				</div>
+			<% } %>
+		<% } %>
+	</section>
+	<script type="text/javascript" src="/js/script.js"></script>
+</body>

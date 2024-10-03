@@ -1,0 +1,46 @@
+<%- include("../partials/navbar.ejs") %>
+
+<div id="back-button-purchase">
+	<input type="submit" value="Back to all books" class="back-button"/>
+</div>
+<div class="purchase-grid">
+	<div class="purchase-book-img">
+		<img src="/images/purchase/<%= book.image_link %>" alt="<%= book.Book_Name %>">
+	</div>
+	<div>
+		<h1 class="book-name"><%= book.Book_Name %></h1>
+		<h3 class="book-author"><%= book.Book_Artist %></h3>
+		<div class="book-price-container">
+			<h3 class="book-price">$<%= book.Book_Price %></h3>
+		</div>
+			<h3 class="book-level">Difficulty level: <%= book.Difficulty %></h3>
+		<% if (book.Shipping) { %>
+			<h5 class="book-shipping">This book can be shipped</h5>
+		<% } else if (!book.Shipping) { %>
+			<h5 class="book-shipping">No hard copy available for this book</h5>
+		<% } %>
+		<form action="/buy/purchase-complete/<%= book.Book_ID %>" method="post">
+			<button type="submit" class="purchase-book-button">Purchase Book</button>
+		</form>
+		<h2>Songs included:</h2>
+		<ul class="songs-included">
+			<% let more = false %>
+			<% for (let song of songs) { %>
+				<% if (songs.indexOf(song) == 5) { %>
+					<span class="more-songs" id="more-songs-<%= book.Book_ID %>">
+					<% more = true %>
+				<% } %> 
+				<li><%= song.Song_Name %></li>
+				<% if (songs.indexOf(song) == songs.length - 1 && more == true) { %>
+					</span>
+					<p id="see-more-<%= book.Book_ID %>" class="see-more">See more</p>
+				<% } %>
+			<% } %>
+		</ul>
+		<h2 class="book-description-subheader">Description</h2>
+		<% for (let paragraph of book.Book_Description.split('\n')) { %>
+			<p class="book-description-paragraph"><%= paragraph %></p>
+		<% } %>
+	</div>
+</div>
+<script type="text/javascript" src="/js/script.js"></script>
