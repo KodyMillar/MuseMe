@@ -32,7 +32,10 @@ const playController = {
 				songsInProgressByBook[songCount.Book_ID] = songCount.In_Progress;
 			});
 
-			const userId = songs[0]['User_ID'];
+			let userId;
+			if (songs.length > 0) {
+				userId = songs[0]['User_ID'];
+			}
 	
 			res.render("play/play", { 
 				userBooks: books,

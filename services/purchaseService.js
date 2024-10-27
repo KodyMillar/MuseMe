@@ -26,6 +26,9 @@ const purchaseService = {
 	},
 
 	addBookPurchaseToDb: async (bookId, userId) => {
+		// add purchased book and songs to user purchase list
+		// returns the book the user purchased
+
 		const connection = await connectDB();
 
 		try {
@@ -40,19 +43,22 @@ const purchaseService = {
 			INNER JOIN song AS s ON bs.Song_ID = s.Song_ID
 			WHERE mb.Book_ID = ?`;
 		
-			const [rows] = await connection.query(query2, [bookId]);
+			const [songs] = await connection.query(query2, [bookId]);
 			let query3 = `INSERT INTO song_progress VALUES`;
-			let songIds = [];
+			let query3Values = [];
 		
-			for (let i = 0; i < rows.length - 1; i++) {
-				query3 += `\n(1, '8153d61f-06f9-4228-b059-3a619f49801c', ?, 'Not Started'),`;
-				songIds.push(rows[i].Song_ID);
+			for (let i = 0; i < songs.length; i++) {
+				query3 += `\n(?, ?, ?, 'Not Started'),`;
+				query3Values.push(bookId);
+				query3Values.push(userId);
+				query3Values.push(songs[i].Song_ID);
 			};
 		
-			query3 += `\n(1, '8153d61f-06f9-4228-b059-3a619f49801c', ?, 'Not Started');`;
-			songIds.push(rows.pop().Song_ID);
+			// replace last comma with semi-colon
+			query3 = query3.replace(/([,])$/, ';')
+			console.log(query3);
 			
-			await connection.query(query3, songIds);
+			await connection.query(query3, query3Values);
 			await connection.commit();
 		
 			const query4 = `SELECT * FROM music_book

@@ -149,7 +149,7 @@ ADD (
 ALTER TABLE instrument_players
 DROP CONSTRAINT instrument_players_ibfk_2;
 
-ALTER TABLE Instrument_Players
+ALTER TABLE instrument_players
 MODIFY COLUMN User_ID CHAR(36) NOT NULL;
 
 ALTER TABLE purchase
@@ -182,51 +182,20 @@ DELETE FROM user_account;
 
 SET SQL_SAFE_UPDATES = 1;
 
-SELECT username FROM user_account
-WHERE username = 'Kodawg395';
-
 ALTER TABLE user_account
 MODIFY COLUMN Password CHAR(60) NOT NULL;
 
-CREATE TABLE test (
-	id INT NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY (id)
-);
-
-SELECT * FROM test
-WHERE id = 'john';
-
-SELECT * FROM user_account;
-
-SHOW TABLES;
-
-SELECT Username, Book_Name, mb.Book_ID, s.Song_ID, Song_Name, s.Difficulty, s.Image_Link, pages FROM music_book AS mb 
-INNER JOIN book_song AS bs ON mb.Book_ID = bs.Book_ID 
-INNER JOIN song AS s ON bs.Song_ID = s.Song_ID
-INNER JOIN purchase AS p ON p.Book_ID = mb.Book_ID
-INNER JOIN user_account AS ua ON ua.User_ID = p.User_ID
-INNER JOIN song_progress AS sp ON sp.User_ID = p.User_ID 
-AND sp.Book_ID = p.Book_ID 
-AND sp.Song_ID = s.Song_ID
-WHERE Username = 'Kodawg395';
+-- SELECT Username, Book_Name, mb.Book_ID, s.Song_ID, Song_Name, s.Difficulty, s.Image_Link, pages FROM music_book AS mb 
+-- INNER JOIN book_song AS bs ON mb.Book_ID = bs.Book_ID 
+-- INNER JOIN song AS s ON bs.Song_ID = s.Song_ID
+-- INNER JOIN purchase AS p ON p.Book_ID = mb.Book_ID
+-- INNER JOIN user_account AS ua ON ua.User_ID = p.User_ID
+-- INNER JOIN song_progress AS sp ON sp.User_ID = p.User_ID 
+-- AND sp.Book_ID = p.Book_ID
+-- AND sp.Song_ID = s.Song_ID
+-- WHERE Username = 'Kodawg395';
 
 DESCRIBE song_progress;
-
-SELECT * FROM user_account
-WHERE Username = 'Kodawg395';
-
-INSERT INTO purchase VALUES
-	(1, '8153d61f-06f9-4228-b059-3a619f49801c');
-
-INSERT INTO song_progress VALUES
-	(1, '8153d61f-06f9-4228-b059-3a619f49801c', 1, 'Not Started'),
-    (1, '8153d61f-06f9-4228-b059-3a619f49801c', 2, 'Not Started'),
-    (1, '8153d61f-06f9-4228-b059-3a619f49801c', 3, 'Not Started'),
-    (1, '8153d61f-06f9-4228-b059-3a619f49801c', 4, 'Not Started'),
-    (1, '8153d61f-06f9-4228-b059-3a619f49801c', 5, 'Not Started'),
-    (1, '8153d61f-06f9-4228-b059-3a619f49801c', 6, 'Not Started'),
-    (1, '8153d61f-06f9-4228-b059-3a619f49801c', 7, 'Not Started'),
-    (1, '8153d61f-06f9-4228-b059-3a619f49801c', 8, 'Not Started');
     
 SET SQL_SAFE_UPDATES = 0;
 DELETE FROM song_progress;
@@ -269,33 +238,21 @@ ALTER TABLE music_book
 ADD COLUMN Book_Artist VARCHAR(30) NOT NULL;
 
 UPDATE music_book
-SET Book_Artist = 'Frederic Chopin' AND Book_Price = 49.99
-WHERE Book_ID = 1;
-
-UPDATE music_book
 SET Book_Artist = 'Frederic Chopin',
 Book_Description = CONCAT_WS('\n', 'This book has all the must-play songs and much more from the legendary Frederic Chopin. Chopin is known for his sophisticated piano solos and waltzes. This book is a must buy for chopin enthusiasts and a great book for passionate piano players wishing to master highly influential songs.', 
-						'Chopin began playing the piano when he was 4 years old, started composing music when he was 7 years old, and gave private piano concerts when he was only 8 years old.',
-						'This book starts off with a well known piece that isn\'t too hard or too easy: Waltz No.7 in C# Minor. This piece will kick you off with a thought provoking melody and will prepare you for Chopin\'s more sophisticated pieces like Waltz in D-flat Major and Fantaisie Impromptu in C Minor. The book also includes what is probably his most famous piece: Nocturne Op 9 No 2 E Flat Major. No matter what song you choose, there will always be a new technique and variation to learn from Chopin\'s music.'),
-Book_Price = 49.99,
-Shipping = 1
-WHERE Book_ID = 1;
+                'Chopin began playing the piano when he was 4 years old, started composing music when he was 7 years old, and gave private piano concerts when he was only 8 years old.',
+				'This book starts off with a well known piece that isn''t too hard or too easy: Waltz No.7 in C# Minor. This piece will kick you off with a thought provoking melody and will prepare you for Chopin''s more sophisticated pieces like Waltz in D-flat Major and Fantaisie Impromptu in C Minor. The book also includes what is probably his most famous piece: Nocturne Op 9 No 2 E Flat Major. No matter what song you choose, there will always be a new technique and variation to learn from Chopin''s music.'),
+                Book_Price = 49.99,
+                Shipping = 1
+                WHERE Book_ID = 1;
 
 UPDATE music_book
 SET Shipping = 1
 WHERE Book_ID = 1;
 
-
-SELECT * FROM music_book
-WHERE Book_ID = 1;
-
-
 UPDATE music_book
 SET Book_Price = '20.95'
 WHERE Book_ID = 2;
-
-USE Music_App;
-DESCRIBE song_progress;
 
 UPDATE song_progress
 SET progress = "Not Started"
@@ -325,9 +282,9 @@ UPDATE music_book
 SET Num_Songs = 8
 WHERE Book_ID = 1;
 
-INSERT INTO instrument (Instrument) VALUES
-	('Piano'),
-    ('Guitar'),
+ INSERT INTO instrument (Instrument) VALUES
+ 	('Piano'),
+     ('Guitar'),
     ('Drums'),
     ('Violin'),
     ('Saxophone'),
@@ -365,17 +322,18 @@ SET Song_Type = 'Song';
 
 SET SQL_SAFE_UPDATES = 1;
 
-INSERT INTO instrument_level VALUES 
-	(1, 'Grade 1', 4, 
-    (1, 'Grade 2', 5
-    (1, 'Grade 3', 6
-    (1, 'Grade 4', 6
-    (1, 'Grade 5', 6
-    (1, 'Grade 6', 7
-    (1, 'Grade 7', 8
-    (1, 'Grade 8', 8
-    (1, 'Grade 9', 10
-    (1, 'Grade 10', 12
+-- INSERT INTO instrument_level VALUES 
+-- 	(1, 'Grade 1', 4, 
+--     (1, 'Grade 2', 5
+--     (1, 'Grade 3', 6
+--     (1, 'Grade 4', 6
+--     (1, 'Grade 5', 6
+--     (1, 'Grade 6', 7
+--     (1, 'Grade 7', 8
+--     (1, 'Grade 8', 8
+--     (1, 'Grade 9', 10
+--     (1, 'Grade 10', 12
 
-INSERT INTO instrument_players VALUES
-	(1, '8153d61f-06f9-4228-b059-3a619f49801c', 1);
+-- INSERT INTO instrument_players VALUES
+-- 	(1, '8153d61f-06f9-4228-b059-3a619f49801c', 1);
+

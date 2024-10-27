@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const fs = require("fs/promises");
 const path = require("path");
 var connectDB = require("../config/db");
 const purchaseService = require('../services/purchaseService');
@@ -42,6 +41,8 @@ let buyController = {
 
             const {book, songs} = await purchaseService.getBookAndSong(bookId);
 
+            console.log(book);
+
             res.render("purchases/purchaseBook", {
                 book: book.shift(),
                 songs: songs
@@ -54,9 +55,11 @@ let buyController = {
     },
 
     purchaseComplete: async (req, res) => {
+        // Adds book and book songs to database
+        
         try {
             const bookId = parseInt(req.params.id);
-            const userId = '8153d61f-06f9-4228-b059-3a619f49801c'
+            const userId = req.session.userId;
     
             const book = await purchaseService.addBookPurchaseToDb(bookId, userId);
     

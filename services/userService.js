@@ -13,7 +13,6 @@ const userService = {
 			const [rows] = await connection.query(query, [username, username]);
 
 			if (rows.length > 0) return true;
-	
 			return false;
 			
 		} catch ({name, message, err}) {
@@ -28,16 +27,12 @@ const userService = {
 		try {
 			const connection = await db();
 	
-			const query = `SELECT username, password, email FROM user_account
+			const query = `SELECT password, email FROM user_account
 			WHERE username = ?`;
 	
 			let [rows] = await connection.query(query, [username]);
-	
+			
 			return await passwordService.comparePass(password, rows.shift().password);
-
-			// return bcrypt.compare(password, rows.shift().password)
-			// 	.then((isAuthenticated) => { return isAuthenticated })
-			// 	.catch((err) => console.log(err));
 
 		} catch ({name, message, err}) {
 			console.log(name);
@@ -106,6 +101,24 @@ const userService = {
 			(?, ?, ?, ?, ?, ?);`
 			
 			await connection.query(query, [uuid, username, hash, firstName, lastName, email]);
+
+		} catch ({name, message, err}) {
+			console.log(name);
+			console.log(message);
+			throw err;
+		}
+	},
+
+	getUserId: async (username) => {
+		const connection = await db();
+
+		try {
+			const query = `SELECT User_ID FROM user_account
+			WHERE username = ?`
+
+			const [rows] = await connection.query(query, [username]);
+
+			return rows.shift().User_ID;
 
 		} catch ({name, message, err}) {
 			console.log(name);

@@ -1,6 +1,7 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const authController = require("../controllers/auth-controller");
+const authController = require('../controllers/auth-controller');
+const userService = require('../services/userService');
 
 router.get("/login", async (req, res) => {
 	res.render("authentication/login", {
@@ -18,13 +19,20 @@ router.get("/welcome", (req, res) => {
 
 router.post("/login", async (req, res) => {
 	try {
-		const username = req.body.username;
-		const password = req.body.password;
+		const {username, password} = req.body
 	
 		const isAuthenticated = await authController.authenticate(username, password);
 	
 		if (isAuthenticated) {
-			res.redirect("/");	
+			const userId = await userService.getUserId(username);
+
+			req.session.isLoggedIn = true;
+			req.session.user = username;
+			req.session.userId = userId;
+			req.session.save(() => {
+				console.log('Saved user to session')
+				res.redirect("/");	
+			})
 		}
 		else {
 			rejectedMessage = "Rejected"

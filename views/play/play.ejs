@@ -22,40 +22,49 @@
 			<option value="song">Song</option>
 		</select>
 	</form>
+	<% if (userBooks.length > 0) { %>
 	<div id="play-grid">
-	<% for (let book of userBooks) { %>
-		<div class="user-book-listing">
-			<img src="/images/purchase/<%= book.image_link %>" width="220" height="340" class="user-book-img" 	id="book-id-<%= book.Book_ID %>">
-			<h4><%= book.Book_Name %></h4>
-			<div class="user-book-info">
-				<h5>Songs Completed: <%= songsCompleted[book.Book_ID] %></h5>
-				<h5>Difficulty: <%= book.Difficulty %></h5>
+		<% for (let book of userBooks) { %>
+			<div class="user-book-listing">
+				<img src="/images/purchase/<%= book.image_link %>" width="220" height="340" class="user-book-img" 	id="book-id-<%= book.Book_ID %>">
+				<h4><%= book.Book_Name %></h4>
+				<div class="user-book-info">
+					<h5>Songs Completed: <%= songsCompleted[book.Book_ID] %></h5>
+					<h5>Difficulty: <%= book.Difficulty %></h5>
+				</div>
+				<h5 class="in-progress-count">Songs in progress: <%= songsInProgress[book.Book_ID] %></h5>
 			</div>
-			<h5 class="in-progress-count">Songs in progress: <%= songsInProgress[book.Book_ID] %></h5>
+		<% } %>
+	</div>
+	<% } else { %>
+		<div class="no-books">
+			<h3 >You don't have any books yet</h3>
+			<form action="/buy" method="get">
+				<input type="submit" value="Purchase Books" />
+			</form>
 		</div>
 	<% } %>
-	</div>
 	<% for (let book in bookSongs) { %>
 		<% if (bookToOpen && book === bookToOpen) { %>
 			<div class="book-songs-window-visible" id="book-window-id-<%= bookSongs[book][0].Book_ID %>">
 		<% } else { %>
 			<div class="book-songs-window" id="book-window-id-<%= bookSongs[book][0].Book_ID %>">
 		<% } %>
-		<div>
-		<% for (let song of bookSongs[book]) { %>
-			<% if (songToOpen && song.Song_ID === parseInt(songToOpen)) { %>
-			<div class="song-pages-visible" id="song-pages-<%= song.Song_ID %>">
-			<% } else { %>
-			<div class="song-pages" id="song-pages-<%= song.Song_ID %>">
-			<% } %>
-				<button class="close-full-screen-button">Exit Full Screen</buton>
-				<button class="full-screen-button">Full Screen</button>
-				<% for (let i=1; i <= song.pages; i++) { %>
-					<img src="/images/songs/<%= song.Image_Link %>/page<%= i %>.jpg" class="book-song">
+			<div>
+			<% for (let song of bookSongs[book]) { %>
+				<% if (songToOpen && song.Song_ID === parseInt(songToOpen)) { %>
+				<div class="song-pages-visible" id="song-pages-<%= song.Song_ID %>">
+				<% } else { %>
+				<div class="song-pages" id="song-pages-<%= song.Song_ID %>">
 				<% } %>
+					<button class="close-full-screen-button">Exit Full Screen</buton>
+					<button class="full-screen-button">Full Screen</button>
+					<% for (let i=1; i <= song.pages; i++) { %>
+						<img src="/images/songs/<%= song.Image_Link %>/page<%= i %>.jpg" class="book-song">
+					<% } %>
+				</div>
+			<% } %>
 			</div>
-		<% } %>
-		</div>
 		<div class="songs-list">
 			<div class="close-book-button"><h6>Close book</h6></div>
 			<h2 class="book-title"><%= bookSongs[book][0].Book_Name %></h2>

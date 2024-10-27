@@ -1,7 +1,6 @@
-const bcrypt = require("bcrypt");
-const db = require("../config/db");
 const userService = require("../services/userService");
 const passwordService = require('../services/passwordService');
+const sessionService = require('../services/sessionService');
 
 const authController = {
 	authenticate: async (username, password) => {
@@ -13,7 +12,9 @@ const authController = {
 			}
 			
 			const authenticated = await userService.authenticateUser(username, password);
+			
 			if (authenticated) {
+				// await sessionService.authenticateSession(username, password);
 				return true;
 			}
 			return false;

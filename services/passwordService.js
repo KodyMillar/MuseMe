@@ -30,16 +30,21 @@ const passwordService = {
 		}
 	},
 
-	encryptPass: (password) => {
+	encryptPass: async (password) => {
 		const saltRounds = 10;
 		return bcrypt.hash(password, saltRounds)
 			.catch((err) => {throw err});
 	},
 
-	comparePass: (enteredPassword, dbPassword) => {
+	comparePass: async (enteredPassword, dbPassword) => {
 		try {
-			return bcrypt.compare(enteredPassword, dbPassword)
-				.then((isAuthenticated) => { return isAuthenticated })
+			console.log("ENTERED PASSWORD: " + enteredPassword)
+			return await bcrypt.compare(enteredPassword, dbPassword)
+				.then((isAuthenticated) => { 
+					console.log(enteredPassword)
+					console.log(isAuthenticated)
+					return isAuthenticated 
+				})
 				.catch((err) => console.log(err));
 
 		} catch ({name, message, err}) {
