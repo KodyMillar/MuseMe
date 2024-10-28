@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css"/>
+    <script type="text/javascript" src="/js/logOut.js" defer></script>
 </head>
 <div class="header clearfix">
     <nav id="navbar">
@@ -17,6 +18,8 @@
                 <a href="/wishlist"><h3>Wishlist</h3></a>
             </div>
         </div>
-        <a href="/auth/login" id="log-out"><h3>Log Out</h3></a>
+        <form action="/auth/login" method="GET" id="log-out">
+            <input type="submit" value="Log Out"/>
+        </form>
     </nav>
 </div>

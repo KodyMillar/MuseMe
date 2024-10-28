@@ -107,6 +107,24 @@ const userService = {
 			console.log(message);
 			throw err;
 		}
+	},
+
+	getUserId: async (username) => {
+		const connection = await db();
+
+		try {
+			const query = `SELECT User_ID FROM user_account
+			WHERE username = ?`
+
+			const [rows] = await connection.query(query, [username]);
+
+			return rows.shift().User_ID;
+
+		} catch ({name, message, err}) {
+			console.log(name);
+			console.log(message);
+			throw err;
+		}
 	}
 }
 

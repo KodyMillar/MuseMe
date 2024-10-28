@@ -55,9 +55,11 @@ let buyController = {
     },
 
     purchaseComplete: async (req, res) => {
+        // Adds book and book songs to database
+        
         try {
             const bookId = parseInt(req.params.id);
-            const userId = '8153d61f-06f9-4228-b059-3a619f49801c'
+            const userId = req.session.userId;
     
             const book = await purchaseService.addBookPurchaseToDb(bookId, userId);
     

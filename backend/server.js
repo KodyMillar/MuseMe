@@ -5,6 +5,7 @@ const session = require('express-session');
 const MemoryStore = require('memorystore')(session);
 const { v4: uuidv4 } = require('uuid');
 const path = require('path');
+const cors = require('cors');
 
 const buyController = require("./controllers/buy-controller");
 const indexController = require("./controllers/index_controller");
@@ -20,6 +21,7 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
+app.use(cors({ origin: "*"}))
 
 app.use(session({
   genid: () => {
@@ -41,7 +43,6 @@ app.use(session({
 }));
 
 app.use((req, res, next) => {
-  console.log(req.user);
   console.log(req.session);
   next();
 })

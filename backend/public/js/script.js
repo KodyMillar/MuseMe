@@ -301,4 +301,6 @@ const backToPurchasePageButton = backToPurchasePageDiv.querySelector('.back-butt
 backToPurchasePageButton.addEventListener('click', () => {
 	console.log(history.back());	
 	history.back();	
-})
+});
+
+
