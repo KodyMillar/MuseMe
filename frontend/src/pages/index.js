@@ -25,9 +25,6 @@ function Home() {
                         alt={imageName}
                     />
                 ))}
-                {/* <% for (let composer of composers) { %> */}
-                {/* <img src="images/composers/<%= composer %>"> */}
-                {/* <% } %> */}
             </div>
         </section>
         </>
