@@ -15,9 +15,10 @@ let buyController = {
         try {
             const books = await buyPageService.getAllBooks();
 
-            res.render('purchases/buy', {
-                songBooks: books
-            });
+            res.status(200).json(books);
+            // res.render('purchases/buy', {
+            //     songBooks: books
+            // });
 
         } catch (err) {
             throw err;

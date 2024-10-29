@@ -52,7 +52,7 @@ app.get("/", isAuthenticated, indexController.listComposers);
 app.use("/auth", authRoute);
 // app.post("/auth", authController.authenticate)
 
-app.get("/buy", isAuthenticated, buyController.listBooks);
+app.get("/buy", buyController.listBooks);
 app.get("/buy/search", isAuthenticated, buyController.searchBooks);
 app.get("/buy/purchase/:id", isAuthenticated, buyController.purchaseBook);
 app.post("/buy/purchase-complete/:id", isAuthenticated, buyController.purchaseComplete);
