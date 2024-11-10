@@ -18,4 +18,19 @@ export async function getMusicBooks() {
         console.log("Error fetching all music books from backend")
         console.log(err.message);
     }
+};
+
+
+export async function getMusicBooksAndSongs(bookId) {
+    console.log("sending request for book to backend")
+    const response = await fetch(`${baseUrl}/buy/purchase/${bookId}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+
+    const booksAndSongs = await response.json();
+
+    return JSON.parse(booksAndSongs);
 }

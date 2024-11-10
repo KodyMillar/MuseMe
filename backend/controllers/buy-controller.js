@@ -40,14 +40,14 @@ let buyController = {
         try {
             const bookId = req.params.id;
 
-            const {book, songs} = await purchaseService.getBookAndSong(bookId);
+            const booksAndSongs = await purchaseService.getBookAndSong(bookId);
 
-            console.log(book);
+            res.status(200).json(JSON.stringify(booksAndSongs));
 
-            res.render("purchases/purchaseBook", {
-                book: book.shift(),
-                songs: songs
-            });
+            // res.render("purchases/purchaseBook", {
+            //     book: book.shift(),
+            //     songs: songs
+            // });
 
         } catch ({name, message}) {
             console.log(name);
