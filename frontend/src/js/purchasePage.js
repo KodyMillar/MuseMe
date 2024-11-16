@@ -2,12 +2,11 @@ export const displayMoreOrLessSongs = () => {
 	const seeMoreButtons = document.querySelectorAll('.see-more');
 	const moreSongs = document.getElementsByClassName('more-songs');
 	
-	console.log("more songs")
 	seeMoreButtons.forEach(seeMoreButton => seeMoreButton.addEventListener('click', readMore));
 	
 	function readMore(e) {
 		const seeMoreId = e.target.id.split('-').pop();
-	
+		
 		let currentSongsListing; 
 		for (let i = 0; i < moreSongs.length; i++) {
 			const moreSongsId = moreSongs[i].id.split('-').pop()
@@ -15,7 +14,7 @@ export const displayMoreOrLessSongs = () => {
 				currentSongsListing = moreSongs[i];
 			}
 		};
-		console.log(currentSongsListing)
+		
 		let songsDisplay = window.getComputedStyle(currentSongsListing).getPropertyValue('display');
 		
 		if (songsDisplay == 'none') {
@@ -26,7 +25,6 @@ export const displayMoreOrLessSongs = () => {
 			e.target.textContent = "See more";
 		};
 	
-		
 	};
 }
 
