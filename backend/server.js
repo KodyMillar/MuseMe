@@ -55,7 +55,7 @@ app.use("/auth", authRoute);
 // app.post("/auth", authController.authenticate)
 
 app.get("/buy", buyController.listBooks);
-app.get("/buy/search", isAuthenticated, buyController.searchBooks);
+app.get("/buy/search", buyController.searchBooks);
 app.get("/buy/purchase/:id", buyController.purchaseBook);
 app.post("/buy/purchase-complete/:id", isAuthenticated, buyController.purchaseComplete);
 

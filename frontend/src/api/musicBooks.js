@@ -35,6 +35,31 @@ export async function getMusicBooksAndSongs(bookId) {
     return JSON.parse(booksAndSongs);
 }
 
+export const searchMusicBooks = async (searchText) => {
+    try {
+        const response = await fetch(`${baseUrl}/buy/search?searchText=${encodeURIComponent(searchText)}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        if (!response.ok) {
+            response.json().then((err) => {
+                throw new Error(`${response.status}: ${err.message}`)
+            });
+        }
+
+        const filteredBooks = await response.json();
+        
+        return JSON.parse(filteredBooks);
+
+    } catch (err) {
+        console.log(err.name);
+        console.log(err.message);
+        throw err;
+    }
+}
 
 export const addBookToPurchased = async (bookId) => {
     try {

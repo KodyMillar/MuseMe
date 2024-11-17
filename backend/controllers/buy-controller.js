@@ -16,9 +16,6 @@ let buyController = {
             const books = await buyPageService.getAllBooks();
 
             res.status(200).json(books);
-            // res.render('purchases/buy', {
-            //     songBooks: books
-            // });
 
         } catch (err) {
             throw err;
@@ -26,14 +23,22 @@ let buyController = {
     },
 
     searchBooks: async (req, res) => {
-        const connection = await connectDB();
-        const searchText = req.query.searchText;
+        try {
+            const searchText = `%${req.query.searchText}%`;
 
-        const books = await buyPageService.getBooksBySearch(searchText);
-        
-        res.render('purchases/buy', {
-            songBooks: books
-        });
+            const books = await buyPageService.getBooksBySearch(searchText);
+
+            res.status(200).json(JSON.stringify(books));
+
+        } catch(err) {
+            console.log(err);
+            if (err.code === "ER_PARSE_ERROR") {
+                res.status(422).json({"message": "Invalid search data format"});
+            }
+            else {
+                res.sendStatus(500);
+            }
+        }
     },
 
     purchaseBook: async (req, res) => {
