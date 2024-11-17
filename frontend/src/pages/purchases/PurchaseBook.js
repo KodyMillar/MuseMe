@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { getMusicBooksAndSongs } from '../../api/musicBooks';
+import { useNavigate } from 'react-router-dom';
+import { 
+    getMusicBooksAndSongs,
+    addBookToPurchased 
+    } from '../../api/musicBooks';
 import { useParams } from 'react-router-dom';
 import { displayMoreOrLessSongs } from '../../js/purchasePage';
 import '../../styles/styles.css'
@@ -8,8 +12,10 @@ function PurchaseBook() {
     const [currentBook, setCurrentBook] = useState({});
     const [currentSongs, setCurrentSongs] = useState([]);
     const [allSongsDisplayed, setAllSongsDisplayed] = useState(false);
+    const [purchaseError, setPurchaseError] = useState(null);
     const moreSongsRef = useRef(null);
-    const { bookId } = useParams();    
+    const { bookId } = useParams();  
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function requestBooksAndSongs(currentBookId) {
@@ -30,6 +36,14 @@ function PurchaseBook() {
 
     function handleClick() {
         setAllSongsDisplayed(prev => !prev);
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        addBookToPurchased(currentBook.Book_ID)
+            .then((purchasedBook) => navigate('/buy/purchase-complete', { state: purchasedBook }))
+            .catch((err) => alert(err.message));
+        
     }
 
     const backendHost = process.env.REACT_APP_BACKEND_HOST;
@@ -57,8 +71,10 @@ function PurchaseBook() {
                     <h3 class="book-price">${ currentBook.Book_Price }</h3>
                 </div>
                     <h3 class="book-level">Difficulty level: { currentBook.Difficulty }</h3>
-                    <h5 class="book-shipping">{ currentBook.shipping ? "This book can be shipped" : "No hard copy available for this book" }</h5>
-                <form action={`/buy/purchase-complete/${currentBook.Book_ID}`} method="post">
+                    <h5 class="book-shipping">
+                        { currentBook.shipping ? "This book can be shipped" : "No hard copy available for this book" }
+                    </h5>
+                <form onSubmit={handleSubmit}>
                     <button type="submit" class="purchase-book-button">Purchase Book</button>
                 </form>
                 <h2>Songs included:</h2>
@@ -101,7 +117,6 @@ function PurchaseBook() {
             ) : null }
             </div>
         </div>
-        
         </>
     )
 }

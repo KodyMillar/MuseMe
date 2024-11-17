@@ -19,7 +19,7 @@ const buyPageService = {
 	getBooksBySearch: async (searchText) => {
 		try {
 			const connection = await connectDB();
-			const query = `SELECT * FROM music_book WHERE Book_Name LIKE ?`;
+			const query = `SELECT * FROM music_book WHERE Book_Name LIKE %?%`;
 			const [rows] = await connection.query(query, [searchText]);
 			return rows;
 

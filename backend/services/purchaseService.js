@@ -69,11 +69,11 @@ const purchaseService = {
 		
 			return book
 
-		} catch ({name, message, err}) {
+		} catch (err) {
 			await connection.rollback();
-			console.log(name);
-			console.log(message);
-			console.log(err);
+			console.log(err.name);
+			console.log(err.message);
+			throw err;
 		}
 	}
 }

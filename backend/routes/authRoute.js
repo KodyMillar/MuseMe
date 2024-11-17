@@ -29,8 +29,8 @@ router.post("/login", async (req, res) => {
 			req.session.user = username;
 			req.session.userId = userId;
 			req.session.save(() => {
-				console.log('Saved user to session')
-				res.redirect("/");	
+				console.log('Saved user to session');
+				res.redirect("/");
 			})
 		}
 		else {

@@ -27,7 +27,7 @@ let buyController = {
 
     searchBooks: async (req, res) => {
         const connection = await connectDB();
-        const searchText = `%${req.query.searchText}%`;
+        const searchText = req.query.searchText;
 
         const books = await buyPageService.getBooksBySearch(searchText);
         
@@ -64,12 +64,14 @@ let buyController = {
     
             const book = await purchaseService.addBookPurchaseToDb(bookId, userId);
     
-            res.render("purchases/purchaseComplete", {
-                book: book.shift()
-            });
+            res.status(201).json(JSON.stringify(book.shift()));
 
         } catch (err) {
-            console.log(err);
+            if (err.code === "ER_DUP_ENTRY") {
+                res.sendStatus(409);
+            } else {
+                res.sendStatus(500);
+            }
         }
 
     }

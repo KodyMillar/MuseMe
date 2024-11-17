@@ -44,6 +44,8 @@ app.use(session({
 
 app.use((req, res, next) => {
   console.log(req.session);
+  req.session.isLoggedIn = true;
+  req.session.userId = '3f2973db-5f51-4b0d-b87b-74302036c8a2';
   next();
 })
 
