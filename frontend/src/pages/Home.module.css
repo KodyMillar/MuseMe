@@ -1,0 +1,46 @@
+#shopDiv {
+    display: flex;
+    justify-content: center;
+}
+
+#shopDiv > a {
+    width: 25%;
+    background-color: none;
+    margin-bottom: 5%;
+}
+
+#shopButton {
+    background-color: rgb(40, 40, 40);
+    width: 100%;
+    margin: auto;
+    color: white;
+    font-size: 26px;
+    border-radius: 10%;
+    cursor: pointer;
+}
+
+#shopButton > h4 {
+    margin: 15px;
+}
+
+#appName {
+    text-align: center;
+    font-size: 48px;
+    margin: auto auto 2%;
+    padding-top: 10%;
+    color: rgb(138, 8, 8);
+}
+
+#homePageTop {
+    background-color: rgb(234, 224, 255);
+}
+
+#homePageTop > h3 {
+    text-align: center;
+    font-size: 2em;
+    margin-top: 10vh;
+}
+
+.hidden {
+    visibility: hidden;
+}
