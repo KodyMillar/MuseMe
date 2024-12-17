@@ -25,7 +25,10 @@
 
 #appName {
     text-align: center;
-    font-size: 48px;
+    font-size: 58px;
+    font-family: "Playwrite DE Grund Guides", cursive;
+    font-weight: 800;
+    font-style: normal;
     margin: auto auto 2%;
     padding-top: 10%;
     color: rgb(138, 8, 8);

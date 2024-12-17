@@ -906,6 +906,9 @@ body {
 .logo-box-heading > h1 {
     font-size: 4em;
     color: #8a0808;
+    font-family: "Playwrite DE Grund Guides", cursive;
+    font-weight: 800;
+    font-style: normal;
 }
 
 .logo-box-heading > h3 {
