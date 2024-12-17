@@ -10,11 +10,13 @@ Run the sql finish Open two terminals and run `npm start` in both the frontend a
 
 ## Technologies
 The technology stacks used for this project include:
-- React for the frontend
-- Express.js for the web server framework
-- Node.js for the backend to run express.js
-- MySQL for the database
-- REST API for seamless communication between the frontend and backend
+- **React** for the frontend
+- **CSS** for the app's presentation
+- **Express.js** for the web server framework
+- **Node.js** for the backend to run express.js
+- **MySQL** for the database
+- **REST API** through fetch requests for seamless communication between the frontend and backend
+- **Bcrypt** for hashing user passwords with salt
 
 ## Key Decisions and Implementations
 
