@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { getMusicBooks, searchMusicBooks } from '../../api/musicBooks';
 import '../../styles/styles.css';
+import BuySideBar from '../../components/layout/navigation/BuySideBar/BuySideBar';
+import BuySearch from '../../components/forms/BuySearch/BuySearch';
+import BookLabels from '../../components/layout/grid/BookLabel/BookLabels';
 
 function Buy() {
     const [musicBooks, setMusicBooks] = useState([]);
@@ -25,26 +28,8 @@ function Buy() {
 
     return (
         <>
-        <div id="buy-sidebar">
-            <div id="buy-sidebar-list">
-                <div>Instrument</div>
-                <div>Difficulty Level</div>
-                <div>Composer</div>
-                <div>Course Bundle</div>
-            </div>
-        </div>
-        <div id="buy-searchbar-div">
-            <form onSubmit={handleSubmit}>
-                <input 
-                    placeholder="search book name..." 
-                    id="buy-searchbar" 
-                    type="search" 
-                    name="searchText" 
-                    value={searchText}
-                    onChange={({target}) => setSearchText(target.value)} 
-                />
-            </form>
-        </div>
+        <BuySideBar />
+        <BuySearch searchText={searchText} setSearchText={setSearchText} handleSubmit={handleSubmit} />
         <section>
             <div id="buy-grid">
                 {musicBooks.map((book) => (
@@ -52,17 +37,13 @@ function Buy() {
                         <a href={`/buy/purchase/${book.Book_ID}`}>
                             <img src={`${musicBookUrl}/images/purchase/${book.image_link}`} width="200" height="300" />
                         </a>
-                        <div class="book-labels">
-                            <h5>{ book.Instrument }</h5>
-                            <h5>{ book.Difficulty }</h5>
-                        </div>
-                        <h4>{ book.Book_Name }</h4>
+                        <BookLabels book={book} />
                     </div>
                 ))}
             </div>
         </section>
         </>
-    )
+    );
 }
 
 export default Buy;

@@ -1,0 +1,14 @@
+.bookInfo {
+    display: flex;
+    justify-content: space-between;
+    height: 5%;
+    /* width: 1em; */
+}
+
+.bookName {
+    margin-top: 0;
+}
+
+.bookLabels {
+    height: 200%;
+}
