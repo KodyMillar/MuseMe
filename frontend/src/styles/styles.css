@@ -14,7 +14,6 @@ body {
 /* buy page
 ---------------------------------*/
 
-
 #buy-grid {
     display: grid;
     grid-template-columns: 200px 200px 200px;
@@ -26,48 +25,23 @@ body {
 
 
 
-/* .book-div {
-    width: 85%;
-} */
-
 /* purchase book page
 --------------------------------------*/
 
-.purchase-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: minmax(auto, max-content);
-    padding-top: 10%;
-    width: 90vw;
-    margin: 0 3% 10%;
-}
-
-.purchase-book-img {
-    display: flex;
-    justify-content: center;
-}
-
-.purchase-book-img > img {
-    /* width: 60%; */
-    flex: 0 1 400px;
-    /* width: 400px; */
-    height: 600px;
-}
-
-.book-name {
+.bookName {
     font-size: 30px;
     color: black;
     text-align: center;
 }
 
-.book-author {
+.bookAuthor {
     font-size: 18px;
     color: rgb(57, 57, 57);
     text-align: center;
     margin-bottom: 10%;
 }
 
-.book-price {
+.bookPrice {
     font-size: 24px;
     color: rgb(255, 255, 255);  
     background-color: rgb(133, 21, 90);
@@ -78,40 +52,27 @@ body {
     text-align: center;
 }
 
-.book-price-container {
+.bookPriceContainer {
     display: flex;
     justify-content: center;  
 }
 
-.book-level {
+.bookLevel {
     margin-top: 7%;
     font-size: 20px;
     text-align: center;
 }
 
-.book-shipping {
+.bookShipping {
     font-size: 16px;
     text-align: center;
 }
 
-.purchase-book-button {
-    background-color:rgb(78, 12, 79);
-    color: white;
-    border-radius: 4px;
-    width: 50%;
-    height: 8%;
-    font-size: 20px;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    margin: 10% 25% 10% 25%;
-    cursor: pointer;
-}
-
-.songs-included {
+.songsIncluded {
     font-size: 18px;
 }
 
-.see-more {
+.seeMore {
     cursor: pointer;
 }
 
@@ -119,21 +80,17 @@ body {
     display: none;
 }
 
-.book-description-subheader {
+.bookDescriptionSubheader {
     border-top: solid 2px rgb(57, 57, 57);
     margin-top: 10%;
     padding-top: 10%;
     font-size: 24px;
 }
 
-.book-description-paragraph {
+.bookDescriptionParagraph {
     font-size: 18px;
 }
 
-#back-button-purchase {
-    padding-top: 8%;
-    margin-left: 5%;
-}
 
 /* purchase complete page
 -------------------------------------*/
@@ -264,17 +221,6 @@ body {
     margin-bottom: 5%;
 }
 
-.user-book-filter-button {
-    background-color: rgb(51, 51, 51);
-    color: white;
-    width: 20%;
-    height: 35px;
-    border: none;
-    box-shadow: 1px 1px 2px black;
-    position: relative;
-    /* border: 10px groove rgb(51, 51, 51); */
-}
-
 #left-filter {
     padding: 0.25% 2px 0.25% 2%;
     border-radius: 6px 0 0 6px;
@@ -287,73 +233,6 @@ body {
 #right-filter {
     padding: 0.25% 2% 0.25% 2px;
     border-radius: 0 3px 3px 0;
-}
-
-.inner-button {
-    background-color: black;
-    width: 90%;
-    height: 95%;
-    display: block;
-    margin: 0;
-    width: 100%;
-    border: none;
-    /* border-left: 1px solid rgb(210, 210, 210);
-    border-radius: 9px 0 0 9px; */
-    cursor: pointer;
-    color: white;
-}
-
-#inner-button-left {
-    border-left: 1px solid rgb(210, 210, 210);
-    border-bottom: 1px solid rgb(91, 91, 91);
-    border-top: 1px solid rgb(91, 91, 91);
-    border-radius: 9px 0 0 9px;
-}
-
-#inner-button-center {
-    border-left: 1px solid rgb(210, 210, 210);
-    border-right: 1px solid rgb(210, 210, 210);
-    border-bottom: 1px solid rgb(91, 91, 91);
-    border-top: 1px solid rgb(91, 91, 91);
-    border-radius: 9px 9px 9px 9px;
-    width: 90%;
-    margin-left: 5%;
-}
-
-#inner-button-right {
-    border-right: 1px solid rgb(210, 210, 210);
-    border-bottom: 1px solid rgb(91, 91, 91);
-    border-top: 1px solid rgb(91, 91, 91);
-    border-radius: 0 9px 9px 0;
-}
-
-.button-edge {
-    background-color: rgb(11, 11, 11);
-    margin-left: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 31px;
-    height: 100%;
-}
-
-#button-edge-left {
-    border-radius: 3px 14px 14px 3px;
-    border-right: 1px solid white;
-    clip-path: polygon(0 0, 100% 17.5%, 100% 83.5%, 0 100%);
-}
-
-/* #edge-button-center {
-    border-radius: 14px 14px 14px 14px;
-    border-right: 1px solid white;
-    clip-path: polygon(0 0, 100% 17.5%, 100% 83.5%, 0 100%);
-} */
-
-#button-edge-right {
-    border-radius: 14px 3px 3px 14px;
-    border-right: 1px solid white;
-    clip-path: polygon(100% 17.5%, 0 0, 0 100%, 100% 83.5%);
-    float: right;
 }
 
 .play-page-search {
@@ -572,14 +451,14 @@ body {
     padding-top: 0;
 }
 
-.back-button {
+/* .back-button {
     background-color: rgb(235, 215, 85);
     border-radius: 4px;
     padding: .5% 1% .5% 1%;
     border: none;
     box-shadow: .5px .5px .5px black;
     cursor: pointer;
-}
+} */
 
 .song-filter-section {
     background-color: rgb(234, 224, 255);

@@ -3,7 +3,7 @@ import { getMusicBooks, searchMusicBooks } from '../../api/musicBooks';
 import '../../styles/styles.css';
 import BuySideBar from '../../components/layout/navigation/BuySideBar/BuySideBar';
 import BuySearch from '../../components/forms/BuySearch/BuySearch';
-import BookLabels from '../../components/layout/grid/BookLabel/BookLabels';
+import BookListing from '../../components/layout/grid/BookListing/BookListing';
 
 function Buy() {
     const [musicBooks, setMusicBooks] = useState([]);
@@ -33,12 +33,7 @@ function Buy() {
         <section>
             <div id="buy-grid">
                 {musicBooks.map((book) => (
-                    <div class="book-div">
-                        <a href={`/buy/purchase/${book.Book_ID}`}>
-                            <img src={`${musicBookUrl}/images/purchase/${book.image_link}`} width="200" height="300" />
-                        </a>
-                        <BookLabels book={book} />
-                    </div>
+                    <BookListing book={book} musicBookUrl={musicBookUrl} />
                 ))}
             </div>
         </section>

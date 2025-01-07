@@ -1,12 +1,16 @@
 import React from 'react';
+import UserBookFilter from '../../components/forms/UserBookFilter/UserBookFilter';
 import '../../styles/styles.css';
 
 function Play() {
     return (
-        <>
+        <>  
         <h1 id="play-page-header">Your Books</h1>
         <div class="user-book-filters">
-            <form action="/play/search/song-progress/<%= userId %>" method="get" class="user-book-filter-button" id="left-filter" >
+            <UserBookFilter formId="leftFilter" spanId="buttonEdgeLeft" inputId="innerButtonLeft" value="Not Started" userId="3f2973db-5f51-4b0d-b87b-74302036c8a2" />
+            <UserBookFilter formId="centerFilter" spanId="buttonEdgeCenter" inputId="innerButtonCenter" value="In Progress" userId="3f2973db-5f51-4b0d-b87b-74302036c8a2" />
+            <UserBookFilter formId="rightFilter" spanId="buttonEdgeRight" inputId="innerButtonRight" value="Completed" userId="3f2973db-5f51-4b0d-b87b-74302036c8a2" />
+            {/* <form action="/play/search/song-progress/<%= userId %>" method="get" class="user-book-filter-button" id="left-filter" >
                 <span class="button-edge" id="button-edge-left"></span>
                 <input type="submit" value="Not Started" name="user-book-filter" class="inner-button" id="inner-button-left"/>
             </form>
@@ -17,7 +21,7 @@ function Play() {
             <form action="/play/search/song-progress/<%= userId %>" method="get" class="user-book-filter-button" id="right-filter"> 
                 <span class="button-edge" id="button-edge-right"></span>
                 <input type="submit" value="Completed" name="user-book-filter" class="inner-button" id="inner-button-right"/>
-            </form>
+            </form> */}
         </div>
         <form class="play-page-search">
             <input type="search" placeholder="search your books..."/>

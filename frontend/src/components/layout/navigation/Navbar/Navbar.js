@@ -6,7 +6,7 @@ import styles from './Navbar.module.css'
 function Navbar() {
     
     return (
-        <div class="header clearfix">
+        <div className="header clearfix">
             <nav id={styles['navbar']} >
                 <a href="/" id={styles['homePage']}><h2>MuseMe</h2></a>
                 <div id={styles['navbarDiv']}>

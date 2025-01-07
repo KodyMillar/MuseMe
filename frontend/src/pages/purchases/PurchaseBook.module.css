@@ -1,0 +1,19 @@
+.purchaseGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: minmax(auto, max-content);
+    padding-top: 10%;
+    width: 90vw;
+    margin: 0 3% 10%;
+}
+
+.purchaseBookImg {
+    display: flex;
+    justify-content: center;
+}
+
+.purchaseBookImg > img {
+    flex: 0 1 400px;
+    height: 600px;
+}
+

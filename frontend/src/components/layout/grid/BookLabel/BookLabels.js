@@ -1,14 +1,13 @@
 import React from 'react';
 import styles from './BookLabels.module.css';
 
-function BookLabels({book}) {
+function BookLabels({book, children}) {
     return (
-        <div class={styles.bookLabels}>
-            <div class={styles.bookInfo}>
-                <h5>{ book.Instrument }</h5>
-                <h5>{ book.Difficulty }</h5>
+        <div className={styles.bookLabels}>
+            <div className={styles.bookInfo}>
+                {React.Children.toArray(children)}
             </div>
-            <h4 class={styles.bookName}>{ book.Book_Name }</h4>
+            <h4 className={styles.bookName}>{ book.Book_Name }</h4>
         </div>
     );
 };
