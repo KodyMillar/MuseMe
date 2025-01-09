@@ -1,0 +1,26 @@
+#buySearchBar {
+    width: 30%;
+    margin-top: 15vh;
+    margin-left: 30%;
+    width: 40vw;
+    height: 5vh;
+}
+
+#searchType {
+    width: 10%;
+    background-color: rgb(189, 153, 205);
+    height: 5vh;
+}
+
+.playPageSearch {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    height: 5vh;
+    margin-bottom: 5%;
+}
+
+.playPageSearch > input {
+    width: 40%;
+    height: 100%;
+}

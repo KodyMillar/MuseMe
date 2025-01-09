@@ -25,7 +25,6 @@ const playService = {
 			const [books] = await connection.query(query1, [username]);
 			const [songs] = await connection.query(query2, [username]);
 
-
 			return {books: books, songs: songs};
 	
 		} catch ({name, message, err}) {

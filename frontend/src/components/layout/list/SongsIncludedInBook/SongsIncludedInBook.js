@@ -41,7 +41,7 @@ function SongsIncludedInBook(props) {
                         </>
                     );
                 } else {
-                    return <li key="rawr">{song.Song_Name}</li>
+                    return <li key={`song-${song.Song_ID}`}>{song.Song_Name}</li>
                 }
             })}
         </ul>

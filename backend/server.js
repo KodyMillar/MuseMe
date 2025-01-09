@@ -59,7 +59,7 @@ app.get("/buy/search", buyController.searchBooks);
 app.get("/buy/purchase/:id", buyController.purchaseBook);
 app.post("/buy/purchase-complete/:id", isAuthenticated, buyController.purchaseComplete);
 
-app.get("/play", isAuthenticated, playController.playOverview);
+app.get("/play", playController.playOverview);
 app.post("/play", isAuthenticated, playController.changeSongProgress);
 app.get("/play/search/song-progress/:userId", isAuthenticated, playController.searchSongProgress);
 

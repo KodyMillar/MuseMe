@@ -221,42 +221,28 @@ body {
     margin-bottom: 5%;
 }
 
-#left-filter {
-    padding: 0.25% 2px 0.25% 2%;
-    border-radius: 6px 0 0 6px;
-}
-
-#center-filter {
-    border-radius: 3px;
-}
-
-#right-filter {
-    padding: 0.25% 2% 0.25% 2px;
-    border-radius: 0 3px 3px 0;
-}
-
-.play-page-search {
+/* .play-page-search {
     display: flex;
     width: 100vw;
     justify-content: center;
     height: 5vh;
     margin-bottom: 5%;
-}
+} */
 
 #filtered-search {
     margin-bottom: 0;
 }
 
-.play-page-search > input {
+/* .play-page-search > input {
     width: 40%;
     height: 100%;
-}
+} */
 
-#play-search-type {
+/* #play-search-type {
     width: 10%;
     background-color: rgb(189, 153, 205);
     height: 100%;
-}
+} */
 
 /* .side {
     background-color: white;

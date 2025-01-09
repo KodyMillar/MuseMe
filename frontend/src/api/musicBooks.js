@@ -64,7 +64,7 @@ export const searchMusicBooks = async (searchText) => {
 export const addBookToPurchased = async (bookId) => {
     try {
         console.log(baseUrl);
-        const response = await fetch (`${baseUrl}/buy/purchase-complete/${bookId}`, {
+        const response = await fetch(`${baseUrl}/buy/purchase-complete/${bookId}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -92,4 +92,29 @@ export const addBookToPurchased = async (bookId) => {
         console.log(err.message);
         throw err;
     }
+}
+
+export const getUserBooksAndSongs = async () => {
+    try {
+        const response = await fetch(`${baseUrl}/play`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        if (!response.ok) {
+            response.json().then((err) => {
+                throw new Error(`${response.status}: ${err.message}`);
+            })
+        };
+
+        const booksAndSongs = await response.json();
+        return JSON.parse(booksAndSongs);
+
+    } catch (err) {
+        console.log(err.name);
+        console.log(err.message);
+        throw err;
+    };
 }
