@@ -1,0 +1,7 @@
+/node_modules
+/views
+/database model
+tmp*
+*.swp
+*.log
+/login page idea.jpg
