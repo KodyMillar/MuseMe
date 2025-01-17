@@ -1,6 +1,6 @@
 services:
   frontend:
-    image: museme-frontend:v1
+    image: kodymills395/museme-frontend:v1
     container_name: museme-frontend
     hostname: museme-frontend
     # env_file: 
@@ -14,7 +14,7 @@ services:
     depends_on:
       - backend
   backend:
-    image: museme-backend:v1
+    image: kodymills395/museme-backend:v1
     container_name: museme-backend
     hostname: museme-backend
     # env_file:
@@ -27,7 +27,7 @@ services:
     depends_on:
       - db
   db:
-    image: museme-db:v1
+    image: kodymills395/museme-db:v1
     container_name: museme-db
     hostname: museme-db
     restart: always
