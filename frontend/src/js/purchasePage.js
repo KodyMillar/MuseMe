@@ -33,7 +33,6 @@ export const backPageEvent = () => {
 	const backToPurchasePageButton = backToPurchasePageDiv.querySelector('.back-button');
 	
 	backToPurchasePageButton.addEventListener('click', () => {
-		console.log(history.back());	
-		history.back();	
+		window.history.back();	
 	});
 }

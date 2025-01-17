@@ -15,13 +15,17 @@ const progressController = require('./controllers/progress-controller');
 const authRoute = require("./routes/authRoute");
 const isAuthenticated = require('./middleware/checkAuth').isAuthenticated;
 
-app.set("view engine", "ejs");
+// app.set("view engine", "ejs");
 
 // middleware
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({ origin: "*"}))
+app.use(cors({ origin: "http://localhost" }));
+// app.use(cors({ 
+//   origin: "http://museme-frontend:3000",
+//   methods: ["GET", "POST", "DELETE"]
+// }));
 
 app.use(session({
   genid: () => {
@@ -43,7 +47,7 @@ app.use(session({
 }));
 
 app.use((req, res, next) => {
-  console.log(req.session);
+  // console.log(req.session);
   req.session.isLoggedIn = true;
   req.session.userId = '3f2973db-5f51-4b0d-b87b-74302036c8a2';
   next();
@@ -65,7 +69,7 @@ app.get("/play/search/song-progress/:userId", isAuthenticated, playController.se
 
 app.get("/my-progress", isAuthenticated, progressController.getProgressPage);
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, "0.0.0.0", () => {
   console.log(`App listening on port ${process.env.PORT}.`);
   console.log("Running on domain " + `${process.env.URL}`);
 })
