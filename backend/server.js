@@ -15,13 +15,13 @@ const progressController = require('./controllers/progress-controller');
 const authRoute = require("./routes/authRoute");
 const isAuthenticated = require('./middleware/checkAuth').isAuthenticated;
 
-// app.set("view engine", "ejs");
+app.set("view engine", "ejs");
 
 // middleware
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({ origin: "http://localhost" }));
+app.use(cors({ origin: "*" }));
 // app.use(cors({ 
 //   origin: "http://museme-frontend:3000",
 //   methods: ["GET", "POST", "DELETE"]
