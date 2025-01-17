@@ -23,9 +23,9 @@ const buyPageService = {
 			const [rows] = await connection.query(query, [searchText]);
 			return rows;
 
-		} catch ({name, message, err}) {
-			console.log(name);
-			console.log(message);
+		} catch (err) {
+			console.log(err.name);
+			console.log(err.message);
 			throw err;
 		}
 	}

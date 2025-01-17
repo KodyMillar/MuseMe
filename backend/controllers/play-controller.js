@@ -36,16 +36,16 @@ const playController = {
 			if (songs.length > 0) {
 				userId = songs[0]['User_ID'];
 			}
-	
-			res.render("play/play", { 
-				userBooks: books,
+			
+			res.status(200).json(JSON.stringify({
+				books: books, 
 				bookSongs: songsByBook,
 				songsCompleted: songsCompletedByBook,
 				songsInProgress: songsInProgressByBook,
 				userId: userId,
 				bookToOpen: bookToOpen,
 				songToOpen: songToOpen
-			});
+			}));
 
 		} catch (err) {
 			console.log(err);

@@ -5,195 +5,14 @@ body {
     overflow-x: hidden;
 }
 
-a {
-
-    &:active {
-        background-color: rgb(121, 59, 197);
-        border-radius: 10px;
-        border: 2px solid rgb(173, 124, 232);
-    }
-
-    &:focus {
-        background-color: rgb(121, 59, 197);
-        border-radius: 10px;
-        border: 2px solid rgb(173, 124, 232);
-    }
-
-    &:link {
-        text-decoration: none;
-    }
-}
-
-#navbar {
-    display: flex;
-    justify-content: space-around;
-    background-color:  rgb(106, 15, 108);
-    color: white; 
-    font-size: 18px;
-    position: fixed;
-    width: 97%;
-    z-index: 2;
-    padding-right: 3%;
-    height: auto;
-}
-
-#navbar-div {
-    width: 80%;
-    margin-left: 2%;
-}
-
-#navbar-items {
-    display: flex;
-    width: 90%;
-    justify-content: space-evenly;
-    align-self: flex-end;
-}
-
-#navbar-items > a {
-    color: white;
-}
-
-#log-out {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-#log-out input {
-    font-size: 18px;
-    color: white;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-#homepage {
-    margin-left: 2%;
-    color: white;
-    z-index: 10;
-    font-size: 20px;
-}
-
-#homepage > h2 {
-    margin: 2vh;
-}
-
 #play-link {
     margin-left: 10%;
-}
-
-
-/* homepage
--------------------------------*/
-
-/* #homepage-layout {
-    display: flex;
-    flex-direction: column;
-} */
-
-#shop-div {
-    display: flex;
-    justify-content: center;
-}
-
-#shop-div > a {
-    width: 25%;
-    background-color: none;
-    margin-bottom: 5%;
-}
-
-#shop-button {
-    background-color: rgb(40, 40, 40);
-    width: 100%;
-    margin: auto;
-    color: white;
-    font-size: 26px;
-    border-radius: 10%;
-    cursor: pointer;
-}
-
-#shop-button > h4 {
-    margin: 15px;
-}
-
-#app-name {
-    text-align: center;
-    font-size: 48px;
-    margin: auto auto 2%;
-    padding-top: 10%;
-    color: rgb(138, 8, 8);
-}
-
-#homepage-top {
-    background-color: rgb(234, 224, 255);
-}
-
-#homepage-top > h3 {
-    text-align: center;
-    font-size: 2em;
-    margin-top: 10vh;
-}
-
-.homepage-section {
-    border-top: 1px solid black;
-}
-
-.home-section-heading {
-    padding-left: 20%;
-    font-size: 2em;
-}
-
-#composers {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    column-gap: 1%;
-    row-gap: 1%;
-    width: 80%;
-    height: 75%;
-    padding-left: 10%;
-}
-
-#composers > img {
-    width: 100%;
-    height: 100%;
-    border-radius: 2%;
-    object-fit: cover;
-}
-
-.hidden {
-    visibility: hidden;
 }
 
 
 
 /* buy page
 ---------------------------------*/
-
-#buy-sidebar {
-    color: white;
-    background-color: rgb(40, 40, 40);
-    width: 15vw;
-    height: 100vh;
-    font-size: 24px;
-    text-align: center;
-    position: fixed;
-    z-index: 1;
-}
-
-#buy-sidebar-list {
-    margin-top: 25vh;
-    height: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
-#buy-sidebar-list > div {
-    border-bottom: 2px solid grey;
-    padding: 10%;
-    margin: 0 5%;
-}
 
 #buy-grid {
     display: grid;
@@ -204,73 +23,25 @@ a {
     height: 100%;
 }
 
-#buy-searchbar-div {
-    background-color: white;
-    width: 100%;
-    height: 25vh;
-    position: fixed;
-    border-bottom: solid 2px black;
-    z-index: 0;
-}
 
-#buy-searchbar {
-    width: 30%;
-    margin-top: 15vh;
-    margin-left: 30%;
-    width: 50vw;
-    height: 5%;
-    position: fixed;
-}
-
-.book-labels {
-    display: flex;
-    justify-content: space-between;
-    height: 5%;
-    /* width: 1em; */
-}
-
-/* .book-div {
-    width: 85%;
-} */
 
 /* purchase book page
 --------------------------------------*/
 
-.purchase-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: minmax(auto, max-content);
-    padding-top: 10%;
-    width: 90vw;
-    margin: 0 3% 10%;
-}
-
-.purchase-book-img {
-    display: flex;
-    justify-content: center;
-}
-
-.purchase-book-img > img {
-    /* width: 60%; */
-    flex: 0 1 400px;
-    /* width: 400px; */
-    height: 600px;
-}
-
-.book-name {
+.bookName {
     font-size: 30px;
     color: black;
     text-align: center;
 }
 
-.book-author {
+.bookAuthor {
     font-size: 18px;
     color: rgb(57, 57, 57);
     text-align: center;
     margin-bottom: 10%;
 }
 
-.book-price {
+.bookPrice {
     font-size: 24px;
     color: rgb(255, 255, 255);  
     background-color: rgb(133, 21, 90);
@@ -281,40 +52,27 @@ a {
     text-align: center;
 }
 
-.book-price-container {
+.bookPriceContainer {
     display: flex;
     justify-content: center;  
 }
 
-.book-level {
+.bookLevel {
     margin-top: 7%;
     font-size: 20px;
     text-align: center;
 }
 
-.book-shipping {
+.bookShipping {
     font-size: 16px;
     text-align: center;
 }
 
-.purchase-book-button {
-    background-color:rgb(78, 12, 79);
-    color: white;
-    border-radius: 4px;
-    width: 50%;
-    height: 8%;
-    font-size: 20px;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    margin: 10% 25% 10% 25%;
-    cursor: pointer;
-}
-
-.songs-included {
+.songsIncluded {
     font-size: 18px;
 }
 
-.see-more {
+.seeMore {
     cursor: pointer;
 }
 
@@ -322,21 +80,17 @@ a {
     display: none;
 }
 
-.book-description-subheader {
+.bookDescriptionSubheader {
     border-top: solid 2px rgb(57, 57, 57);
     margin-top: 10%;
     padding-top: 10%;
     font-size: 24px;
 }
 
-.book-description-paragraph {
+.bookDescriptionParagraph {
     font-size: 18px;
 }
 
-#back-button-purchase {
-    padding-top: 8%;
-    margin-left: 5%;
-}
 
 /* purchase complete page
 -------------------------------------*/
@@ -467,120 +221,28 @@ a {
     margin-bottom: 5%;
 }
 
-.user-book-filter-button {
-    background-color: rgb(51, 51, 51);
-    color: white;
-    width: 20%;
-    height: 35px;
-    border: none;
-    box-shadow: 1px 1px 2px black;
-    position: relative;
-    /* border: 10px groove rgb(51, 51, 51); */
-}
-
-#left-filter {
-    padding: 0.25% 2px 0.25% 2%;
-    border-radius: 6px 0 0 6px;
-}
-
-#center-filter {
-    border-radius: 3px;
-}
-
-#right-filter {
-    padding: 0.25% 2% 0.25% 2px;
-    border-radius: 0 3px 3px 0;
-}
-
-.inner-button {
-    background-color: black;
-    width: 90%;
-    height: 95%;
-    display: block;
-    margin: 0;
-    width: 100%;
-    border: none;
-    /* border-left: 1px solid rgb(210, 210, 210);
-    border-radius: 9px 0 0 9px; */
-    cursor: pointer;
-    color: white;
-}
-
-#inner-button-left {
-    border-left: 1px solid rgb(210, 210, 210);
-    border-bottom: 1px solid rgb(91, 91, 91);
-    border-top: 1px solid rgb(91, 91, 91);
-    border-radius: 9px 0 0 9px;
-}
-
-#inner-button-center {
-    border-left: 1px solid rgb(210, 210, 210);
-    border-right: 1px solid rgb(210, 210, 210);
-    border-bottom: 1px solid rgb(91, 91, 91);
-    border-top: 1px solid rgb(91, 91, 91);
-    border-radius: 9px 9px 9px 9px;
-    width: 90%;
-    margin-left: 5%;
-}
-
-#inner-button-right {
-    border-right: 1px solid rgb(210, 210, 210);
-    border-bottom: 1px solid rgb(91, 91, 91);
-    border-top: 1px solid rgb(91, 91, 91);
-    border-radius: 0 9px 9px 0;
-}
-
-.button-edge {
-    background-color: rgb(11, 11, 11);
-    margin-left: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 31px;
-    height: 100%;
-}
-
-#button-edge-left {
-    border-radius: 3px 14px 14px 3px;
-    border-right: 1px solid white;
-    clip-path: polygon(0 0, 100% 17.5%, 100% 83.5%, 0 100%);
-}
-
-/* #edge-button-center {
-    border-radius: 14px 14px 14px 14px;
-    border-right: 1px solid white;
-    clip-path: polygon(0 0, 100% 17.5%, 100% 83.5%, 0 100%);
-} */
-
-#button-edge-right {
-    border-radius: 14px 3px 3px 14px;
-    border-right: 1px solid white;
-    clip-path: polygon(100% 17.5%, 0 0, 0 100%, 100% 83.5%);
-    float: right;
-}
-
-.play-page-search {
+/* .play-page-search {
     display: flex;
     width: 100vw;
     justify-content: center;
     height: 5vh;
     margin-bottom: 5%;
-}
+} */
 
 #filtered-search {
     margin-bottom: 0;
 }
 
-.play-page-search > input {
+/* .play-page-search > input {
     width: 40%;
     height: 100%;
-}
+} */
 
-#play-search-type {
+/* #play-search-type {
     width: 10%;
     background-color: rgb(189, 153, 205);
     height: 100%;
-}
+} */
 
 /* .side {
     background-color: white;
@@ -775,14 +437,14 @@ a {
     padding-top: 0;
 }
 
-.back-button {
+/* .back-button {
     background-color: rgb(235, 215, 85);
     border-radius: 4px;
     padding: .5% 1% .5% 1%;
     border: none;
     box-shadow: .5px .5px .5px black;
     cursor: pointer;
-}
+} */
 
 .song-filter-section {
     background-color: rgb(234, 224, 255);
@@ -985,6 +647,9 @@ a {
 .logo-box-heading > h1 {
     font-size: 4em;
     color: #8a0808;
+    font-family: "Playwrite DE Grund Guides", cursive;
+    font-weight: 800;
+    font-style: normal;
 }
 
 .logo-box-heading > h3 {

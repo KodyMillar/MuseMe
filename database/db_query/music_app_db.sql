@@ -322,6 +322,12 @@ SET Song_Type = 'Song';
 
 SET SQL_SAFE_UPDATES = 1;
 
+ALTER TABLE song_progress
+ADD INDEX book_by_user (User_ID ASC, Book_ID ASC) VISIBLE;
+
+ALTER TABLE purchase 
+ADD INDEX purchase_user (User_ID ASC) VISIBLE;
+
 -- INSERT INTO instrument_level VALUES 
 -- 	(1, 'Grade 1', 4, 
 --     (1, 'Grade 2', 5

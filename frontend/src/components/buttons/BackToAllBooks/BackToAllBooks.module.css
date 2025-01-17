@@ -1,0 +1,17 @@
+#backButtonPurchase {
+    padding-top: 8%;
+    margin-left: 5%;
+}
+
+.backButton {
+    background-color: rgb(235, 215, 85);
+    border-radius: 4px;
+    padding: .5% 1% .5% 1%;
+    border: none;
+    box-shadow: .5px .5px .5px black;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgb(205, 187, 73);
+    }
+}

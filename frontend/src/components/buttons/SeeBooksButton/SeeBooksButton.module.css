@@ -1,0 +1,24 @@
+#seeBooksButtonDiv {
+    display: flex;
+    justify-content: center;
+}
+
+#seeBooksButtonDiv > a {
+    width: 25%;
+    background-color: none;
+    margin-bottom: 5%;
+}
+
+#seeBooksButton {
+    background-color: rgb(40, 40, 40);
+    width: 100%;
+    margin: auto;
+    color: white;
+    font-size: 26px;
+    border-radius: 10%;
+    cursor: pointer;
+}
+
+#seeBooksButton > h4 {
+    margin: 15px;
+}

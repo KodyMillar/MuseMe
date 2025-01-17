@@ -15,9 +15,7 @@ let buyController = {
         try {
             const books = await buyPageService.getAllBooks();
 
-            res.render('purchases/buy', {
-                songBooks: books
-            });
+            res.status(200).json(books);
 
         } catch (err) {
             throw err;
@@ -25,28 +23,36 @@ let buyController = {
     },
 
     searchBooks: async (req, res) => {
-        const connection = await connectDB();
-        const searchText = `%${req.query.searchText}%`;
+        try {
+            const searchText = `%${req.query.searchText}%`;
 
-        const books = await buyPageService.getBooksBySearch(searchText);
-        
-        res.render('purchases/buy', {
-            songBooks: books
-        });
+            const books = await buyPageService.getBooksBySearch(searchText);
+
+            res.status(200).json(JSON.stringify(books));
+
+        } catch(err) {
+            console.log(err);
+            if (err.code === "ER_PARSE_ERROR") {
+                res.status(422).json({"message": "Invalid search data format"});
+            }
+            else {
+                res.sendStatus(500);
+            }
+        }
     },
 
     purchaseBook: async (req, res) => {
         try {
             const bookId = req.params.id;
 
-            const {book, songs} = await purchaseService.getBookAndSong(bookId);
+            const booksAndSongs = await purchaseService.getBookAndSong(bookId);
 
-            console.log(book);
+            res.status(200).json(JSON.stringify(booksAndSongs));
 
-            res.render("purchases/purchaseBook", {
-                book: book.shift(),
-                songs: songs
-            });
+            // res.render("purchases/purchaseBook", {
+            //     book: book.shift(),
+            //     songs: songs
+            // });
 
         } catch ({name, message}) {
             console.log(name);
@@ -63,12 +69,14 @@ let buyController = {
     
             const book = await purchaseService.addBookPurchaseToDb(bookId, userId);
     
-            res.render("purchases/purchaseComplete", {
-                book: book.shift()
-            });
+            res.status(201).json(JSON.stringify(book.shift()));
 
         } catch (err) {
-            console.log(err);
+            if (err.code === "ER_DUP_ENTRY") {
+                res.sendStatus(409);
+            } else {
+                res.sendStatus(500);
+            }
         }
 
     }

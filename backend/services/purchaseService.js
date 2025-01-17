@@ -7,7 +7,8 @@ const purchaseService = {
 			const query1 = `SELECT * FROM music_book
 			WHERE Book_ID = ?`;
 	
-			const [book] = await connection.query(query1, [bookId]);
+			const [[book]] = await connection.query(query1, [bookId]);
+			console.log(book)
 			
 			const query2 = `SELECT * FROM song AS s
 			INNER JOIN book_song AS bs ON s.Song_ID = bs.Song_ID
@@ -68,11 +69,11 @@ const purchaseService = {
 		
 			return book
 
-		} catch ({name, message, err}) {
+		} catch (err) {
 			await connection.rollback();
-			console.log(name);
-			console.log(message);
-			console.log(err);
+			console.log(err.name);
+			console.log(err.message);
+			throw err;
 		}
 	}
 }

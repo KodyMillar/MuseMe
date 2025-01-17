@@ -1,0 +1,68 @@
+services:
+  frontend:
+    image: kodymills395/museme-frontend:v1
+    container_name: museme-frontend
+    hostname: museme-frontend
+    # env_file: 
+    #   - ../frontend/.env.local
+    ports:
+      - 3000:3000
+    expose:
+      - '3000'
+    networks:
+      - public
+    depends_on:
+      - backend
+  backend:
+    image: kodymills395/museme-backend:v1
+    container_name: museme-backend
+    hostname: museme-backend
+    # env_file:
+    #   - ../backend/.env
+    ports:
+      - 8000:8000
+    networks:
+      - public
+      - db
+    depends_on:
+      - db
+  db:
+    image: kodymills395/museme-db:v1
+    container_name: museme-db
+    hostname: museme-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ROMRAMRemRam!
+      MYSQL_USER: kody
+      MYSQL_PASSWORD: ROMRAMRemRam!
+    ports:
+      - 3305:3306
+    expose:
+      - '3305'
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - db
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ../proxy/museme-proxy.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - public
+    depends_on:
+      - db
+      - backend
+      - frontend
+
+volumes:
+  db:
+
+networks:
+  public:
+    driver: bridge
+  db:
+    driver: bridge
+    internal: true

@@ -15,13 +15,17 @@ const progressController = require('./controllers/progress-controller');
 const authRoute = require("./routes/authRoute");
 const isAuthenticated = require('./middleware/checkAuth').isAuthenticated;
 
-app.set("view engine", "ejs");
+// app.set("view engine", "ejs");
 
 // middleware
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({ origin: "*"}))
+app.use(cors({ origin: "http://localhost" }));
+// app.use(cors({ 
+//   origin: "http://museme-frontend:3000",
+//   methods: ["GET", "POST", "DELETE"]
+// }));
 
 app.use(session({
   genid: () => {
@@ -43,7 +47,9 @@ app.use(session({
 }));
 
 app.use((req, res, next) => {
-  console.log(req.session);
+  // console.log(req.session);
+  req.session.isLoggedIn = true;
+  req.session.userId = '3f2973db-5f51-4b0d-b87b-74302036c8a2';
   next();
 })
 
@@ -52,18 +58,18 @@ app.get("/", isAuthenticated, indexController.listComposers);
 app.use("/auth", authRoute);
 // app.post("/auth", authController.authenticate)
 
-app.get("/buy", isAuthenticated, buyController.listBooks);
-app.get("/buy/search", isAuthenticated, buyController.searchBooks);
-app.get("/buy/purchase/:id", isAuthenticated, buyController.purchaseBook);
+app.get("/buy", buyController.listBooks);
+app.get("/buy/search", buyController.searchBooks);
+app.get("/buy/purchase/:id", buyController.purchaseBook);
 app.post("/buy/purchase-complete/:id", isAuthenticated, buyController.purchaseComplete);
 
-app.get("/play", isAuthenticated, playController.playOverview);
+app.get("/play", playController.playOverview);
 app.post("/play", isAuthenticated, playController.changeSongProgress);
 app.get("/play/search/song-progress/:userId", isAuthenticated, playController.searchSongProgress);
 
 app.get("/my-progress", isAuthenticated, progressController.getProgressPage);
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, "0.0.0.0", () => {
   console.log(`App listening on port ${process.env.PORT}.`);
   console.log("Running on domain " + `${process.env.URL}`);
 })

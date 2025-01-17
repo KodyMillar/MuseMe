@@ -1,0 +1,24 @@
+#appName {
+    text-align: center;
+    font-size: 58px;
+    font-family: "Playwrite DE Grund Guides", cursive;
+    font-weight: 800;
+    font-style: normal;
+    margin: auto auto 2%;
+    padding-top: 10%;
+    color: rgb(138, 8, 8);
+}
+
+#homePageTop {
+    background-color: rgb(234, 224, 255);
+}
+
+#homePageTop > h3 {
+    text-align: center;
+    font-size: 2em;
+    margin-top: 10vh;
+}
+
+.hidden {
+    visibility: hidden;
+}

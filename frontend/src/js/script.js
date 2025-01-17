@@ -268,7 +268,7 @@ backButton.addEventListener('mouseleave', () => {
 const seeMoreButtons = document.querySelectorAll('.see-more');
 const moreSongs = document.getElementsByClassName('more-songs');
 
-
+console.log("more songs")
 seeMoreButtons.forEach(seeMoreButton => seeMoreButton.addEventListener('click', readMore));
 
 function readMore(e) {
