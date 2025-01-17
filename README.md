@@ -2,11 +2,11 @@
 Museme is a web application that provides music books that self-teaching instrument players can purchase based on their level, lets them use their device as their music sheet, and tracks the songs they have completed and are in progress of learning. This is the same app as in the MuseMe repository, except the frontend is being changed from EJS to React, and thus the app will be using client-side rendering instead. 
 
 ## Directions
-Run the SQL script in MySQL or in the command line:
+Run the docker-compose.yml file in the root directory to pull the images and bring all of the services up:
 ```
-mysql -u <username> -p < backend/db_query/music_app_db.sql
+docker compose -f deployment/docker-compose.yml up -d
 ```
-Run the sql finish Open two terminals and run `npm start` in both the frontend and the backend folders in separate terminals. Run the backend first before the frontend. 
+Then enter localhost in the browser and it will bring up the app.
 
 ## Technologies
 The technology stacks used for this project include:
@@ -15,6 +15,7 @@ The technology stacks used for this project include:
 - **Express.js** for the web server framework
 - **Node.js** for the backend to run express.js
 - **MySQL** for the database
+- **Nginx** for the proxy server
 - **REST API** through fetch requests for seamless communication between the frontend and backend
 - **Bcrypt** for hashing user passwords with salt
 
