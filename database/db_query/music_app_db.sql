@@ -1,6 +1,7 @@
 CREATE DATABASE music_app;
-
 USE music_app;
+CREATE USER 'museme'@'%' IDENTIFIED WITH 'mysql_native_password' BY 'ROMRAMRemRam!';
+GRANT ALL PRIVILEGES ON music_app.* TO 'museme'@'%';
 
 -- music_book table stores all the music books for sale
 CREATE TABLE `music_app`.`music_book` (
